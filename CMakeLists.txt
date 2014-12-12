@@ -29,10 +29,7 @@ ecm_setup_version(${KDEPIMLIBS_VERSION} VARIABLE_PREFIX KMBOX
 find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5KDELibs4Support ${KF5_VERSION} CONFIG REQUIRED)
 
-# FIXME: remove this if/endif when Kdepimlibs is split.
-if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-  find_package(KF5Mime ${KDEPIMLIBS_VERSION} CONFIG REQUIRED)
-endif()
+find_package(KF5Mime ${KDEPIMLIBS_VERSION} CONFIG REQUIRED)
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 
 ########### Targets ###########
@@ -62,7 +59,4 @@ install(FILES
    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}
    COMPONENT Devel
 )
-
-if ("${CMAKE_BINARY_DIR}" STREQUAL "${KMbox_BINARY_DIR}")
-  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-endif()
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

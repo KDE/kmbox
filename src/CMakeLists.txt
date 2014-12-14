@@ -2,6 +2,7 @@ set(kmbox_SRCS
     mboxentry.cpp
     mbox_p.cpp
     mbox.cpp
+    kmbox_debug.cpp
 )
 
 add_library(KF5Mbox ${kmbox_SRCS})

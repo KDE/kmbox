@@ -19,7 +19,7 @@
 
 #include "mbox_p.h"
 
-#include <QDebug>
+#include "kmbox_debug.h"
 #include <QUrl>
 #include <QLocale>
 
@@ -46,8 +46,8 @@ bool MBoxPrivate::open()
     }
 
     if (!mMboxFile.open(QIODevice::ReadWrite)) {     // messages file
-        qDebug() << "Cannot open mbox file `" << mMboxFile.fileName() << "' FileError:"
-                 << mMboxFile.errorString();
+        qCDebug(KMBOX_LOG) << "Cannot open mbox file `" << mMboxFile.fileName() << "' FileError:"
+                           << mMboxFile.errorString();
         return false;
     }
 

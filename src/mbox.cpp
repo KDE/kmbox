@@ -27,7 +27,7 @@
 #include "mbox_p.h"
 #include "mboxentry_p.h"
 
-#include <QDebug>
+#include "kmbox_debug.h"
 #include <QStandardPaths>
 #include <QUrl>
 
@@ -72,8 +72,8 @@ MBoxEntry MBox::appendMessage(const KMime::Message::Ptr &entry)
     const QByteArray rawEntry = MBoxPrivate::escapeFrom(entry->encodedContent());
 
     if (rawEntry.size() <= 0) {
-        qDebug() << "Message added to folder `" << d->mMboxFile.fileName()
-                 << "' contains no data. Ignoring it.";
+        qCDebug(KMBOX_LOG) << "Message added to folder `" << d->mMboxFile.fileName()
+                           << "' contains no data. Ignoring it.";
         return MBoxEntry();
     }
 
@@ -152,7 +152,7 @@ bool MBox::load(const QString &fileName)
     d->initLoad(fileName);
 
     if (!lock()) {
-        qDebug() << "Failed to lock";
+        qCDebug(KMBOX_LOG) << "Failed to lock";
         return false;
     }
 
@@ -245,8 +245,8 @@ bool MBox::lock()
 
         rc = QProcess::execute(QLatin1String("lockfile"), args);
         if (rc != 0) {
-            qDebug() << "lockfile -l20 -r5 " << d->mMboxFile.fileName()
-                     << ": Failed (" << rc << ") switching to read only mode";
+            qCDebug(KMBOX_LOG) << "lockfile -l20 -r5 " << d->mMboxFile.fileName()
+                               << ": Failed (" << rc << ") switching to read only mode";
             d->mReadOnly = true; // In case the MBox object was created read/write we
             // set it to read only when locking failed.
         } else {
@@ -259,8 +259,8 @@ bool MBox::lock()
         rc = QProcess::execute(QLatin1String("mutt_dotlock"), args);
 
         if (rc != 0) {
-            qDebug() << "mutt_dotlock " << d->mMboxFile.fileName()
-                     << ": Failed (" << rc << ") switching to read only mode";
+            qCDebug(KMBOX_LOG) << "mutt_dotlock " << d->mMboxFile.fileName()
+                               << ": Failed (" << rc << ") switching to read only mode";
             d->mReadOnly = true; // In case the MBox object was created read/write we
             // set it to read only when locking failed.
         } else {
@@ -274,8 +274,8 @@ bool MBox::lock()
         rc = QProcess::execute(QLatin1String("mutt_dotlock"), args);
 
         if (rc != 0) {
-            qDebug() << "mutt_dotlock -p " << d->mMboxFile.fileName() << ":"
-                     << ": Failed (" << rc << ") switching to read only mode";
+            qCDebug(KMBOX_LOG) << "mutt_dotlock -p " << d->mMboxFile.fileName() << ":"
+                               << ": Failed (" << rc << ") switching to read only mode";
             d->mReadOnly = true;
         } else {
             d->mFileLocked = true;
@@ -330,7 +330,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
         const QByteArray line = d->mMboxFile.readLine();
 
         if (!d->isMBoxSeparator(line)) {
-            qDebug() << "Found invalid separator at:" << entry.messageOffset();
+            qCDebug(KMBOX_LOG) << "Found invalid separator at:" << entry.messageOffset();
             unlock();
             return false; // The file is messed up or the index is incorrect.
         }
@@ -340,7 +340,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
     if (deletedEntries.size() == d->mEntries.size()) {
         d->mEntries.clear();
         d->mMboxFile.resize(0);
-        qDebug() << "Purge comleted successfully, unlocking the file.";
+        qCDebug(KMBOX_LOG) << "Purge comleted successfully, unlocking the file.";
         return unlock();
     }
 
@@ -410,7 +410,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
     d->mMboxFile.resize(writeOffset);
     d->mEntries = resultingEntryList;
 
-    qDebug() << "Purge comleted successfully, unlocking the file.";
+    qCDebug(KMBOX_LOG) << "Purge comleted successfully, unlocking the file.";
     if (movedEntries) {
         *movedEntries = tmpMovedEntries;
     }
@@ -443,7 +443,7 @@ QByteArray MBox::readRawMessage(const MBoxEntry &entry)
         QByteArray line = d->mMboxFile.readLine();
 
         if (!d->isMBoxSeparator(line)) {
-            qDebug() << "[MBox::readEntry] Invalid entry at:" << offset;
+            qCDebug(KMBOX_LOG) << "[MBox::readEntry] Invalid entry at:" << offset;
             if (!wasLocked) {
                 unlock();
             }
@@ -474,7 +474,7 @@ QByteArray MBox::readRawMessage(const MBoxEntry &entry)
         QByteArray line = buffer.readLine();
 
         if (!d->isMBoxSeparator(line)) {
-            qDebug() << "[MBox::readEntry] Invalid appended entry at:" << offset;
+            qCDebug(KMBOX_LOG) << "[MBox::readEntry] Invalid appended entry at:" << offset;
             if (!wasLocked) {
                 unlock();
             }
@@ -525,7 +525,7 @@ QByteArray MBox::readMessageHeaders(const MBoxEntry &entry)
     const bool wasLocked = d->mFileLocked;
     if (!wasLocked) {
         if (!lock()) {
-            qDebug() << "Failed to lock";
+            qCDebug(KMBOX_LOG) << "Failed to lock";
             return QByteArray();
         }
     }
@@ -610,21 +610,21 @@ bool MBox::save(const QString &fileName)
 bool MBox::setLockType(LockType ltype)
 {
     if (d->mFileLocked) {
-        qDebug() << "File is currently locked.";
+        qCDebug(KMBOX_LOG) << "File is currently locked.";
         return false; // Don't change the method if the file is currently locked.
     }
 
     switch (ltype) {
     case ProcmailLockfile:
         if (QStandardPaths::findExecutable(QLatin1String("lockfile")).isEmpty()) {
-            qDebug() << "Could not find the lockfile executable";
+            qCDebug(KMBOX_LOG) << "Could not find the lockfile executable";
             return false;
         }
         break;
     case MuttDotlock: // fall through
     case MuttDotlockPrivileged:
         if (QStandardPaths::findExecutable(QLatin1String("mutt_dotlock")).isEmpty()) {
-            qDebug() << "Could not find the mutt_dotlock executable";
+            qCDebug(KMBOX_LOG) << "Could not find the mutt_dotlock executable";
             return false;
         }
         break;

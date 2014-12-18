@@ -22,7 +22,7 @@
 
 #include "kmbox_export.h"
 
-#include <QtCore/QList>
+#include <QtCore/QVector>
 #include <QtCore/QMetaType>
 #include <QtCore/QPair>
 #include <QtCore/QSharedDataPointer>
@@ -42,7 +42,7 @@ public:
     /**
      * Describes a list of mbox entry objects.
      */
-    typedef QList<MBoxEntry> List;
+    typedef QVector<MBoxEntry> List;
 
     /**
      * Describes a pair of mbox entry objects.

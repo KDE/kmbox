@@ -352,7 +352,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
 
     quint64 origFileSize = d->mMboxFile.size();
 
-    QListIterator<MBoxEntry> i(d->mEntries);
+    QVectorIterator<MBoxEntry> i(d->mEntries);
     while (i.hasNext()) {
         MBoxEntry entry = i.next();
 

@@ -18,6 +18,7 @@ include(KDEFrameworkCompilerSettings)
 
 set(KF5_VERSION "5.5.0")
 set(KDEPIMLIBS_VERSION "4.79.0")
+set(KMIMELIBS_VERSION "4.79.0")
 
 ecm_setup_version(${KDEPIMLIBS_VERSION} VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h"
@@ -29,7 +30,7 @@ ecm_setup_version(${KDEPIMLIBS_VERSION} VARIABLE_PREFIX KMBOX
 find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5KDELibs4Support ${KF5_VERSION} CONFIG REQUIRED)
 
-find_package(KF5Mime ${KDEPIMLIBS_VERSION} CONFIG REQUIRED)
+find_package(KF5Mime ${KMIMELIBS_VERSION} CONFIG REQUIRED)
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 
 ########### Targets ###########

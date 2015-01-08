@@ -1,0 +1,14 @@
+maintainer: 
+description: MBox library support
+tier: 3
+type: functional
+platforms:
+    - name: All
+portingAid: false
+deprecated: false
+release: false
+libraries:
+ - qmake: Mbox
+   cmake: "KF5::Mbox"
+cmakename: KF5Mbox
+

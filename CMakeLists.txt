@@ -27,9 +27,6 @@ ecm_setup_version(${KMBOX_LIB_VERSION} VARIABLE_PREFIX KMBOX
 )
 
 ########### Find packages ###########
-find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
-find_package(KF5KDELibs4Support ${KF5_VERSION} CONFIG REQUIRED)
-
 find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 

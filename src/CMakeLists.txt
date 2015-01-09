@@ -16,7 +16,6 @@ target_include_directories(KF5Mbox PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}
 
 target_link_libraries(KF5Mbox
    PUBLIC
-    KF5::CoreAddons
     KF5::Mime 
 )
 
@@ -52,5 +51,5 @@ install(FILES
 )
 
 
-ecm_generate_pri_file(BASE_NAME Mbox LIB_NAME KF5Mbox DEPS "CoreAddons Mime" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KF5_INCLUDE_INSTALL_DIR}/KMbox)
+ecm_generate_pri_file(BASE_NAME Mbox LIB_NAME KF5Mbox DEPS "Mime" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KF5_INCLUDE_INSTALL_DIR}/KMbox)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

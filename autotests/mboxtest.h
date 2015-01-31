@@ -44,6 +44,7 @@ private Q_SLOTS:
     void testEntries();
     void testPurge();
     void testHeaders();
+    void testReadOnlyMbox();
 
 private:
     QString fileName();

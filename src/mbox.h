@@ -138,7 +138,7 @@ public:
      *         loaded, false otherwise. If the latter, the physical file has
      *         not changed.
      */
-    bool purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *movedEntries = 0);
+    bool purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *movedEntries = Q_NULLPTR);
 
     /**
      * Reads the entire message from the file for the given mbox @p entry. If the

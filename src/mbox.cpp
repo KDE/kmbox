@@ -510,7 +510,7 @@ KMime::Message *MBox::readMessage(const MBoxEntry &entry)
 {
     const QByteArray message = readRawMessage(entry);
     if (message.isEmpty()) {
-        return 0;
+        return Q_NULLPTR;
     }
 
     KMime::Message *mail = new KMime::Message();

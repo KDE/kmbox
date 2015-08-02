@@ -418,7 +418,7 @@ void MboxTest::testLockTimeout()
     mbox.lock();
     QVERIFY(mbox.locked());
 
-    QTest::qWait(1010);
+    QTest::qWait(1500);
     QVERIFY(!mbox.locked());
 }
 

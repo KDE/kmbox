@@ -235,7 +235,7 @@ bool MBox::lock()
 
     switch (d->mLockType) {
     case ProcmailLockfile:
-        args << QLatin1String("-l20") << QLatin1String("-r5");
+        args << QStringLiteral("-l20") << QStringLiteral("-r5");
         if (!d->mLockFileName.isEmpty()) {
             args << QString::fromLocal8Bit(QFile::encodeName(d->mLockFileName));
         } else {
@@ -243,7 +243,7 @@ bool MBox::lock()
                                            QLatin1String(".lock")));
         }
 
-        rc = QProcess::execute(QLatin1String("lockfile"), args);
+        rc = QProcess::execute(QStringLiteral("lockfile"), args);
         if (rc != 0) {
             qCDebug(KMBOX_LOG) << "lockfile -l20 -r5 " << d->mMboxFile.fileName()
                                << ": Failed (" << rc << ") switching to read only mode";
@@ -256,7 +256,7 @@ bool MBox::lock()
 
     case MuttDotlock:
         args << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
-        rc = QProcess::execute(QLatin1String("mutt_dotlock"), args);
+        rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
 
         if (rc != 0) {
             qCDebug(KMBOX_LOG) << "mutt_dotlock " << d->mMboxFile.fileName()
@@ -269,9 +269,9 @@ bool MBox::lock()
         break;
 
     case MuttDotlockPrivileged:
-        args << QLatin1String("-p")
+        args << QStringLiteral("-p")
              << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
-        rc = QProcess::execute(QLatin1String("mutt_dotlock"), args);
+        rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
 
         if (rc != 0) {
             qCDebug(KMBOX_LOG) << "mutt_dotlock -p " << d->mMboxFile.fileName() << ":"
@@ -623,14 +623,14 @@ bool MBox::setLockType(LockType ltype)
 
     switch (ltype) {
     case ProcmailLockfile:
-        if (QStandardPaths::findExecutable(QLatin1String("lockfile")).isEmpty()) {
+        if (QStandardPaths::findExecutable(QStringLiteral("lockfile")).isEmpty()) {
             qCDebug(KMBOX_LOG) << "Could not find the lockfile executable";
             return false;
         }
         break;
     case MuttDotlock: // fall through
     case MuttDotlockPrivileged:
-        if (QStandardPaths::findExecutable(QLatin1String("mutt_dotlock")).isEmpty()) {
+        if (QStandardPaths::findExecutable(QStringLiteral("mutt_dotlock")).isEmpty()) {
             qCDebug(KMBOX_LOG) << "Could not find the mutt_dotlock executable";
             return false;
         }
@@ -675,15 +675,15 @@ bool MBox::unlock()
         break;
 
     case MuttDotlock:
-        args << QLatin1String("-u")
+        args << QStringLiteral("-u")
              << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
-        rc = QProcess::execute(QLatin1String("mutt_dotlock"), args);
+        rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
         break;
 
     case MuttDotlockPrivileged:
-        args << QLatin1String("-u") << QLatin1String("-p")
+        args << QStringLiteral("-u") << QStringLiteral("-p")
              << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
-        rc = QProcess::execute(QLatin1String("mutt_dotlock"), args);
+        rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
         break;
 
     case None: // Fall through.

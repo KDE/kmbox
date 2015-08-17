@@ -24,12 +24,12 @@
 using namespace KMBox;
 
 MBoxEntry::MBoxEntry()
-    : d(new Private)
+    : d(new MBoxEntryPrivate)
 {
 }
 
 MBoxEntry::MBoxEntry(quint64 offset)
-    : d(new Private)
+    : d(new MBoxEntryPrivate)
 {
     d->mOffset = offset;
 }

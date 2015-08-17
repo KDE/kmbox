@@ -25,15 +25,15 @@
 namespace KMBox
 {
 
-class MBoxEntry::Private : public QSharedData
+class MBoxEntryPrivate : public QSharedData
 {
 public:
-    Private()
+    MBoxEntryPrivate()
         : mOffset(0), mMessageSize(0), mSeparatorSize(0)
     {
     }
 
-    Private(const Private &other)
+    MBoxEntryPrivate(const MBoxEntryPrivate &other)
         : QSharedData(other)
     {
         mOffset = other.mOffset;

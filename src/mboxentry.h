@@ -29,7 +29,7 @@
 
 namespace KMBox
 {
-
+class MBoxEntryPrivate;
 /**
  * @short A class that encapsulates an entry of a MBox.
  *
@@ -113,8 +113,7 @@ private:
     //@cond PRIVATE
     friend class MBox;
 
-    class Private;
-    QSharedDataPointer<Private> d;
+    QSharedDataPointer<MBoxEntryPrivate> d;
     //@endcond
 };
 

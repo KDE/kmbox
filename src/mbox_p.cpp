@@ -108,7 +108,7 @@ QByteArray MBoxPrivate::mboxMessageSeparator(const QByteArray &msg)
     if (!from || from->addresses().isEmpty()) {
         separator += "unknown@unknown.invalid";
     } else {
-        separator += from->addresses().first() + ' ';
+        separator += from->addresses().at(0) + ' ';
     }
 
     // format dateTime according to the mbox "standard" RFC4155

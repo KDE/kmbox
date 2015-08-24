@@ -2,8 +2,9 @@ set(kmbox_SRCS
     mboxentry.cpp
     mbox_p.cpp
     mbox.cpp
-    kmbox_debug.cpp
 )
+
+ecm_qt_declare_logging_category(kmbox_SRCS HEADER kmbox_debug.h IDENTIFIER KMBOX_LOG CATEGORY_NAME log_kmbox)
 
 add_library(KF5Mbox ${kmbox_SRCS})
 

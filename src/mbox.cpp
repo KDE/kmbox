@@ -128,6 +128,7 @@ MBoxEntry::List MBox::entries(const MBoxEntry::List &deletedEntries) const
     }
 
     MBoxEntry::List result;
+    result.reserve(d->mEntries.size());
 
     foreach (const MBoxEntry &entry, d->mEntries) {
         if (!deletedEntries.contains(entry)) {

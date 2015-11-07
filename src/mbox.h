@@ -260,6 +260,7 @@ public:
 
 private:
     //@cond PRIVATE
+    Q_DISABLE_COPY(MBox)
     friend class MBoxPrivate;
     MBoxPrivate *const d;
     //@endcond

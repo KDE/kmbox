@@ -77,13 +77,13 @@ void MboxTest::testSetLockMethod()
 {
     MBox mbox1;
 
-    if (!QStandardPaths::findExecutable(QLatin1String("lockfile")).isEmpty()) {
+    if (!QStandardPaths::findExecutable(QStringLiteral("lockfile")).isEmpty()) {
         QVERIFY(mbox1.setLockType(MBox::ProcmailLockfile));
     } else {
         QVERIFY(!mbox1.setLockType(MBox::ProcmailLockfile));
     }
 
-    if (!QStandardPaths::findExecutable(QLatin1String("mutt_dotlock")).isEmpty()) {
+    if (!QStandardPaths::findExecutable(QStringLiteral("mutt_dotlock")).isEmpty()) {
         QVERIFY(mbox1.setLockType(MBox::MuttDotlock));
         QVERIFY(mbox1.setLockType(MBox::MuttDotlockPrivileged));
     } else {
@@ -99,12 +99,12 @@ void MboxTest::testLockBeforeLoad()
     // Should fail because it's not known which file to lock.
     MBox mbox;
 
-    if (!QStandardPaths::findExecutable(QLatin1String("lockfile")).isEmpty()) {
+    if (!QStandardPaths::findExecutable(QStringLiteral("lockfile")).isEmpty()) {
         QVERIFY(mbox.setLockType(MBox::ProcmailLockfile));
         QVERIFY(!mbox.lock());
     }
 
-    if (!QStandardPaths::findExecutable(QLatin1String("mutt_dotlock")).isEmpty()) {
+    if (!QStandardPaths::findExecutable(QStringLiteral("mutt_dotlock")).isEmpty()) {
         QVERIFY(mbox.setLockType(MBox::MuttDotlock));
         QVERIFY(!mbox.lock());
         QVERIFY(mbox.setLockType(MBox::MuttDotlockPrivileged));

@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(KMbox)
 
 # ECM setup
-find_package(ECM 5.14.0 CONFIG REQUIRED)
+find_package(ECM 5.17.0 CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)
@@ -17,9 +17,9 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings)
 include(ECMQtDeclareLoggingCategory)
 
-set(KF5_VERSION "5.12.0")
-set(KMBOX_LIB_VERSION "4.79.0")
-set(KMIME_LIB_VERSION "4.79.0")
+set(KF5_VERSION "5.17.0")
+set(KMBOX_LIB_VERSION "5.0.40")
+set(KMIME_LIB_VERSION "5.0.40")
 
 ecm_setup_version(${KMBOX_LIB_VERSION} VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h"

@@ -18,8 +18,8 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
 
 set(KF5_VERSION "5.19.0")
-set(KMBOX_LIB_VERSION "5.1.80")
-set(KMIME_LIB_VERSION "5.1.80")
+set(KMBOX_LIB_VERSION "5.2.40")
+set(KMIME_LIB_VERSION "5.2.40")
 
 ecm_setup_version(${KMBOX_LIB_VERSION} VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h"

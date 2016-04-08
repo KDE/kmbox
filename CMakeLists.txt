@@ -18,7 +18,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
 
 set(KF5_VERSION "5.19.0")
-set(KMBOX_LIB_VERSION "5.1.90")
+set(KMBOX_LIB_VERSION "5.2.0")
 set(KMIME_LIB_VERSION "5.1.90")
 
 ecm_setup_version(${KMBOX_LIB_VERSION} VARIABLE_PREFIX KMBOX

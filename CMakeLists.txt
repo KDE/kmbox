@@ -17,8 +17,10 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
 
+set(PIM_VERSION "5.2.40")
+
 set(KF5_VERSION "5.19.0")
-set(KMBOX_LIB_VERSION "5.2.40")
+set(KMBOX_LIB_VERSION ${PIM_VERSION})
 set(KMIME_LIB_VERSION "5.2.40")
 
 ecm_setup_version(${KMBOX_LIB_VERSION} VARIABLE_PREFIX KMBOX

@@ -27,7 +27,7 @@ using namespace KMBox;
 
 MBoxPrivate::MBoxPrivate(MBox *mbox)
     : mInitialMboxFileSize(0), mMBox(mbox),
-      mSeparatorMatcher(QStringLiteral("^From .*[0-9][0-9]:[0-9][0-9]")), mReadOnly(false)
+      mSeparatorMatcher(QStringLiteral("^From .*[0-9][0-9]:[0-9][0-9]")), mLockType(MBox::None), mFileLocked(false), mReadOnly(false)
 {
     connect(&mUnlockTimer, &QTimer::timeout, this, &MBoxPrivate::unlockMBox);
 }

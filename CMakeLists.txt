@@ -21,7 +21,7 @@ include(ECMQtDeclareLoggingCategory)
 set(PIM_VERSION "5.2.90")
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "5.2.80")
+set(KMIME_LIB_VERSION "5.2.90")
 
 ecm_setup_version(${KMBOX_LIB_VERSION} VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h"

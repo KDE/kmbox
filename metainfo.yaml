@@ -12,3 +12,7 @@ libraries:
    cmake: "KF5::Mbox"
 cmakename: KF5Mbox
 
+public_lib: true
+group: kdepim
+platforms:
+    - name: Linux

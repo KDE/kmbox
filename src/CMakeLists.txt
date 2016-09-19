@@ -4,7 +4,7 @@ set(kmbox_SRCS
     mbox.cpp
 )
 
-ecm_qt_declare_logging_category(kmbox_SRCS HEADER kmbox_debug.h IDENTIFIER KMBOX_LOG CATEGORY_NAME log_kmbox)
+ecm_qt_declare_logging_category(kmbox_SRCS HEADER kmbox_debug.h IDENTIFIER KMBOX_LOG CATEGORY_NAME org.kde.pim.kmbox)
 
 add_library(KF5Mbox ${kmbox_SRCS})
 

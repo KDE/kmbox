@@ -35,7 +35,21 @@
 #include <QtCore/QProcess>
 
 using namespace KMBox;
+#if QT_VERSION < QT_VERSION_CHECK(5,7,0)
+namespace QtPrivate
+{
+template <typename T> struct QAddConst {
+    typedef const T Type;
+};
+}
 
+// this adds const to non-const objects (like std::as_const)
+template <typename T>
+Q_DECL_CONSTEXPR typename QtPrivate::QAddConst<T>::Type &qAsConst(T &t) Q_DECL_NOTHROW { return t; }
+// prevent rvalue arguments:
+template <typename T>
+void qAsConst(const T &&) Q_DECL_EQ_DELETE;
+#endif
 /// public methods.
 
 MBox::MBox()
@@ -130,7 +144,7 @@ MBoxEntry::List MBox::entries(const MBoxEntry::List &deletedEntries) const
     MBoxEntry::List result;
     result.reserve(d->mEntries.size());
 
-    foreach (const MBoxEntry &entry, d->mEntries) {
+    for (const MBoxEntry &entry : qAsConst(d->mEntries)) {
         if (!deletedEntries.contains(entry)) {
             result << entry;
         }
@@ -326,7 +340,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
         return false;
     }
 
-    foreach (const MBoxEntry &entry, deletedEntries) {
+    for (const MBoxEntry &entry : qAsConst(deletedEntries)) {
         d->mMboxFile.seek(entry.messageOffset());
         const QByteArray line = d->mMboxFile.readLine();
 
@@ -576,7 +590,7 @@ bool MBox::save(const QString &fileName)
             QFile::setPermissions(fileName, d->mMboxFile.permissions() | QFile::WriteOwner);
         }
 
-        if (d->mAppendedEntries.size() == 0) {
+        if (d->mAppendedEntries.isEmpty()) {
             return true; // Nothing to do
         }
 
@@ -597,7 +611,7 @@ bool MBox::save(const QString &fileName)
     if ( d->mReadOnly )
         return false;
 
-    if (d->mAppendedEntries.size() == 0) {
+    if (d->mAppendedEntries.isEmpty()) {
         return true; // Nothing to do.
     }
 

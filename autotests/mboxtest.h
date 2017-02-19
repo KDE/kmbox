@@ -62,10 +62,10 @@ class ThreadFillsMBox : public QThread
     Q_OBJECT
 
 public:
-    ThreadFillsMBox(const QString &fileName);
+    explicit ThreadFillsMBox(const QString &fileName);
 
 protected:
-    virtual void run();
+    virtual void run() Q_DECL_OVERRIDE;
 
 private:
     KMBox::MBox *mbox;

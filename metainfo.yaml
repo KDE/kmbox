@@ -10,7 +10,7 @@ release: false
 libraries:
  - qmake: Mbox
    cmake: "KF5::Mbox"
-cmakename: KF5Mbox
+   cmakename: KF5Mbox
 
 public_lib: true
 group: kdepim

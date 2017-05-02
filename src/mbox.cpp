@@ -344,7 +344,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
         return unlock();
     }
 
-    qSort(d->mEntries.begin(), d->mEntries.end(), lessThanByOffset);
+    std::sort(d->mEntries.begin(), d->mEntries.end(), lessThanByOffset);
     quint64 writeOffset = 0;
     bool writeOffSetInitialized = false;
     MBoxEntry::List resultingEntryList;

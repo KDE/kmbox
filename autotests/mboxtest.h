@@ -65,7 +65,7 @@ public:
     explicit ThreadFillsMBox(const QString &fileName);
 
 protected:
-    virtual void run() Q_DECL_OVERRIDE;
+    virtual void run() override;
 
 private:
     KMBox::MBox *mbox;

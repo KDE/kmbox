@@ -153,6 +153,9 @@ QByteArray MBoxPrivate::escapeFrom(const QByteArray &str)
                 *d++ = '>';
             }
         // fall through
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
         default:
             onlyAnglesAfterLF = false;
             break;

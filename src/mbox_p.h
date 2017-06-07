@@ -22,9 +22,9 @@
 
 #include "mbox.h"
 
-#include <QtCore/QFile>
-#include <QtCore/QObject>
-#include <QtCore/QTimer>
+#include <QFile>
+#include <QObject>
+#include <QTimer>
 
 namespace KMBox
 {

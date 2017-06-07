@@ -20,7 +20,7 @@
 #ifndef KMBOX_MBOXENTRY_P_H
 #define KMBOX_MBOXENTRY_P_H
 
-#include <QtCore/QSharedData>
+#include <QSharedData>
 
 namespace KMBox
 {

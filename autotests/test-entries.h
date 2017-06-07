@@ -20,7 +20,7 @@
 #ifndef TEST_ENTRIES_H
 #define TEST_ENTRIES_H
 
-#include <QtCore/QByteArray>
+#include <QByteArray>
 
 const QByteArray sEntry1(
     "Return-path: <commitfilter@new.kstuff.org>\n"

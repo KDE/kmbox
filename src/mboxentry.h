@@ -22,10 +22,10 @@
 
 #include "kmbox_export.h"
 
-#include <QtCore/QVector>
-#include <QtCore/QMetaType>
-#include <QtCore/QPair>
-#include <QtCore/QSharedDataPointer>
+#include <QVector>
+#include <QMetaType>
+#include <QPair>
+#include <QSharedDataPointer>
 
 namespace KMBox
 {

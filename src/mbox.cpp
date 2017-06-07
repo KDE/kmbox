@@ -31,8 +31,8 @@
 #include <QStandardPaths>
 #include <QUrl>
 
-#include <QtCore/QBuffer>
-#include <QtCore/QProcess>
+#include <QBuffer>
+#include <QProcess>
 
 using namespace KMBox;
 /// public methods.

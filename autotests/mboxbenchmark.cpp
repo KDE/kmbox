@@ -19,7 +19,7 @@
 
 #include "mboxbenchmark.h"
 
-#include <QtCore/QCryptographicHash>
+#include <QCryptographicHash>
 
 #include <qtest.h>
 #include <QTemporaryDir>

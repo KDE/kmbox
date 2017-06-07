@@ -20,7 +20,7 @@
 #ifndef MBOXBENCHMARK_H
 #define MBOXBENCHMARK_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "mbox.h"
 

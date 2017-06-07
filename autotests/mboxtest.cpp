@@ -18,8 +18,8 @@
 
 #include "mboxtest.h"
 
-#include <QtCore/QDir>
-#include <QtCore/QFile>
+#include <QDir>
+#include <QFile>
 
 #include <qtest.h>
 #include <QStandardPaths>

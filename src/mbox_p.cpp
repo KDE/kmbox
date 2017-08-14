@@ -152,10 +152,8 @@ QByteArray MBoxPrivate::escapeFrom(const QByteArray &str)
             if (onlyAnglesAfterLF && qstrncmp(s + 1, "rom ", STRDIM("rom ")) == 0) {
                 *d++ = '>';
             }
-        // fall through
-#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
-        Q_FALLTHROUGH();
-#endif
+            // fall through
+            Q_FALLTHROUGH();
         default:
             onlyAnglesAfterLF = false;
             break;

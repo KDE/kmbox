@@ -54,15 +54,15 @@ public Q_SLOTS:
 public:
     QByteArray      mAppendedEntries;
     MBoxEntry::List mEntries;
-    quint64         mInitialMboxFileSize;
+    quint64         mInitialMboxFileSize = 0;
     QString         mLockFileName;
-    MBox            *mMBox;
+    MBox            *mMBox = nullptr;
     QFile           mMboxFile;
     QTimer          mUnlockTimer;
     QRegExp         mSeparatorMatcher;
     MBox::LockType  mLockType;
-    bool            mFileLocked;
-    bool            mReadOnly;
+    bool            mFileLocked = false;
+    bool            mReadOnly = false;
 
 
 public: /// Static helper methods

@@ -52,7 +52,7 @@ private:
     void removeTestFile();
 
 private:
-    QTemporaryDir *mTempDir;
+    QTemporaryDir *mTempDir = nullptr;
     KMime::Message::Ptr mMail1;
     KMime::Message::Ptr mMail2;
 };
@@ -68,7 +68,7 @@ protected:
     void run() override;
 
 private:
-    KMBox::MBox *mbox;
+    KMBox::MBox *mbox = nullptr;
 };
 
 #endif // MBOXTEST_H

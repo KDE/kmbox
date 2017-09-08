@@ -29,7 +29,6 @@ class MBoxEntryPrivate : public QSharedData
 {
 public:
     MBoxEntryPrivate()
-        : mOffset(0), mMessageSize(0), mSeparatorSize(0)
     {
     }
 
@@ -41,9 +40,9 @@ public:
         mSeparatorSize = other.mSeparatorSize;
     }
 
-    quint64 mOffset;
-    quint64 mMessageSize;
-    quint64 mSeparatorSize;
+    quint64 mOffset = 0;
+    quint64 mMessageSize = 0;
+    quint64 mSeparatorSize = 0;
 };
 
 }

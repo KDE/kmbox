@@ -26,9 +26,7 @@
 #include <QObject>
 #include <QTimer>
 
-namespace KMBox
-{
-
+namespace KMBox {
 class MBoxPrivate : public QObject
 {
     Q_OBJECT
@@ -52,18 +50,17 @@ public Q_SLOTS:
     void unlockMBox();
 
 public:
-    QByteArray      mAppendedEntries;
+    QByteArray mAppendedEntries;
     MBoxEntry::List mEntries;
-    quint64         mInitialMboxFileSize = 0;
-    QString         mLockFileName;
-    MBox            *mMBox = nullptr;
-    QFile           mMboxFile;
-    QTimer          mUnlockTimer;
-    QRegExp         mSeparatorMatcher;
-    MBox::LockType  mLockType;
-    bool            mFileLocked = false;
-    bool            mReadOnly = false;
-
+    quint64 mInitialMboxFileSize = 0;
+    QString mLockFileName;
+    MBox *mMBox = nullptr;
+    QFile mMboxFile;
+    QTimer mUnlockTimer;
+    QRegExp mSeparatorMatcher;
+    MBox::LockType mLockType;
+    bool mFileLocked = false;
+    bool mReadOnly = false;
 
 public: /// Static helper methods
     static QByteArray escapeFrom(const QByteArray &msg);
@@ -78,7 +75,6 @@ public: /// Static helper methods
      */
     static void unescapeFrom(char *msg, size_t size);
 };
-
 }
 
 #endif // KMBOX_MBOX_P_H

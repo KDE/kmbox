@@ -22,9 +22,7 @@
 
 #include <QSharedData>
 
-namespace KMBox
-{
-
+namespace KMBox {
 class MBoxEntryPrivate : public QSharedData
 {
 public:
@@ -44,7 +42,6 @@ public:
     quint64 mMessageSize = 0;
     quint64 mSeparatorSize = 0;
 };
-
 }
 
 #endif // KMBOX_MBOXENTRY_P_H

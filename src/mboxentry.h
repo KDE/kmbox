@@ -27,8 +27,7 @@
 #include <QPair>
 #include <QSharedDataPointer>
 
-namespace KMBox
-{
+namespace KMBox {
 class MBoxEntryPrivate;
 /**
  * @short A class that encapsulates an entry of a MBox.
@@ -116,7 +115,6 @@ private:
     QSharedDataPointer<MBoxEntryPrivate> d;
     //@endcond
 };
-
 }
 
 Q_DECLARE_TYPEINFO(KMBox::MBoxEntry, Q_MOVABLE_TYPE);

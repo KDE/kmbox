@@ -169,9 +169,8 @@ bool MBox::load(const QString &fileName)
 
         // if atEnd, use mail only if there was a separator line at all,
         // otherwise it's not a valid mbox
-        if (d->isMBoxSeparator(line) ||
-                (d->mMboxFile.atEnd() && (prevSeparator.size() != 0))) {
-
+        if (d->isMBoxSeparator(line)
+            || (d->mMboxFile.atEnd() && (prevSeparator.size() != 0))) {
             // if we are the at the file end, update pos to not forget the last line
             if (d->mMboxFile.atEnd()) {
                 pos = d->mMboxFile.pos();
@@ -239,8 +238,8 @@ bool MBox::lock()
         if (!d->mLockFileName.isEmpty()) {
             args << QString::fromLocal8Bit(QFile::encodeName(d->mLockFileName));
         } else {
-            args << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName() +
-                                           QLatin1String(".lock")));
+            args << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()
+                                                             +QLatin1String(".lock")));
         }
 
         rc = QProcess::execute(QStringLiteral("lockfile"), args);
@@ -313,7 +312,7 @@ static bool lessThanByOffset(const MBoxEntry &left, const MBoxEntry &right)
 
 bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *movedEntries)
 {
-    if ( d->mMboxFile.fileName().isEmpty() || d->mReadOnly ) {
+    if (d->mMboxFile.fileName().isEmpty() || d->mReadOnly) {
         return false; // No file loaded yet or it's readOnly
     }
 
@@ -359,9 +358,9 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
         if (deletedEntries.contains(entry) && !writeOffSetInitialized) {
             writeOffset = entry.messageOffset();
             writeOffSetInitialized = true;
-        } else if (writeOffSetInitialized &&
-                   writeOffset < entry.messageOffset() &&
-                   !deletedEntries.contains(entry)) {
+        } else if (writeOffSetInitialized
+                   && writeOffset < entry.messageOffset()
+                   && !deletedEntries.contains(entry)) {
             // The current message doesn't have to be deleted, but must be moved.
             // First determine the size of the entry that must be moved.
             quint64 entrySize = 0;
@@ -593,8 +592,9 @@ bool MBox::save(const QString &fileName)
         return true;
     }
 
-    if ( d->mReadOnly )
+    if (d->mReadOnly) {
         return false;
+    }
 
     if (d->mAppendedEntries.isEmpty()) {
         return true; // Nothing to do.

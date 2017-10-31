@@ -319,30 +319,30 @@ void MboxTest::testEntries()
     mbox1.appendMessage(mMail1);
 
     MBoxEntry::List infos = mbox1.entries();
-    QCOMPARE(infos.size() , 3);
+    QCOMPARE(infos.size(), 3);
 
     MBoxEntry::List deletedEntries;
     deletedEntries << infos.at(0);
 
     MBoxEntry::List infos2 = mbox1.entries(deletedEntries);
-    QCOMPARE(infos2.size() , 2);
+    QCOMPARE(infos2.size(), 2);
     QVERIFY(infos2.first() != infos.first());
     QVERIFY(infos2.last() != infos.first());
 
     deletedEntries << infos.at(1);
     infos2 = mbox1.entries(deletedEntries);
 
-    QCOMPARE(infos2.size() , 1);
+    QCOMPARE(infos2.size(), 1);
     QVERIFY(infos2.first() != infos.at(0));
     QVERIFY(infos2.first() != infos.at(1));
 
     deletedEntries << infos.at(2);
     infos2 = mbox1.entries(deletedEntries);
-    QCOMPARE(infos2.size() , 0);
+    QCOMPARE(infos2.size(), 0);
 
     QVERIFY(!deletedEntries.contains(MBoxEntry(10)));       // some random offset
     infos2 = mbox1.entries(MBoxEntry::List() << MBoxEntry(10));
-    QCOMPARE(infos2.size() , 3);
+    QCOMPARE(infos2.size(), 3);
     QCOMPARE(infos2.at(0), infos.at(0));
     QCOMPARE(infos2.at(1), infos.at(1));
     QCOMPARE(infos2.at(2), infos.at(2));
@@ -523,8 +523,8 @@ void ThreadFillsMBox::run()
     file.open(QIODevice::WriteOnly | QIODevice::Append);
 
     QByteArray message = KMime::CRLFtoLF(sEntry1);
-    file.write(QByteArray("From test@local.local ") +
-               QDateTime::currentDateTime().toString(Qt::ISODate).toUtf8() + "\n");
+    file.write(QByteArray("From test@local.local ")
+               +QDateTime::currentDateTime().toString(Qt::ISODate).toUtf8() + "\n");
     file.write(message);
     file.write("\n\n");
     file.close();

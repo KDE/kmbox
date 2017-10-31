@@ -25,9 +25,7 @@
 
 #include <kmime/kmime_message.h>
 
-namespace KMBox
-{
-
+namespace KMBox {
 class MBoxPrivate;
 
 /**
@@ -257,7 +255,6 @@ public:
      */
     bool isReadOnly() const;
 
-
 private:
     //@cond PRIVATE
     Q_DISABLE_COPY(MBox)
@@ -265,7 +262,6 @@ private:
     MBoxPrivate *const d;
     //@endcond
 };
-
 }
 
 #endif // KMBOX_MBOX_H

@@ -68,8 +68,7 @@ void MBoxBenchmark::testNoLockPerformance()
         mbox2.setLockType(MBox::None);
         mbox2.setUnlockTimeout(5000);
         mbox2.load(fileName());
-        foreach (const MBoxEntry &entry, mbox2.entries())
-        {
+        foreach (const MBoxEntry &entry, mbox2.entries()) {
             mbox2.readMessage(entry);
         }
     }
@@ -96,8 +95,7 @@ void MBoxBenchmark::testProcfileLockPerformance()
         mbox2.load(fileName());
         mbox2.setUnlockTimeout(5000);   // Keep the mbox locked for five seconds.
 
-        foreach (const MBoxEntry &entry, mbox2.entries())
-        {
+        foreach (const MBoxEntry &entry, mbox2.entries()) {
             mbox2.readMessage(entry);
         }
     }

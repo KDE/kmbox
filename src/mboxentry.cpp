@@ -54,7 +54,7 @@ MBoxEntry &MBoxEntry::operator=(const MBoxEntry &other)
 
 bool MBoxEntry::operator==(const MBoxEntry &other) const
 {
-    return (d->mOffset == other.d->mOffset);
+    return d->mOffset == other.d->mOffset;
 }
 
 bool MBoxEntry::operator!=(const MBoxEntry &other) const
@@ -64,7 +64,7 @@ bool MBoxEntry::operator!=(const MBoxEntry &other) const
 
 bool MBoxEntry::isValid() const
 {
-    return ((d->mOffset != 0) && (d->mMessageSize != 0));
+    return (d->mOffset != 0) && (d->mMessageSize != 0);
 }
 
 quint64 MBoxEntry::messageOffset() const

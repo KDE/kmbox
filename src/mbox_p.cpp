@@ -26,8 +26,12 @@
 using namespace KMBox;
 
 MBoxPrivate::MBoxPrivate(MBox *mbox)
-    : mInitialMboxFileSize(0), mMBox(mbox),
-      mSeparatorMatcher(QStringLiteral("^From .*[0-9][0-9]:[0-9][0-9]")), mLockType(MBox::None), mFileLocked(false), mReadOnly(false)
+    : mInitialMboxFileSize(0)
+    , mMBox(mbox)
+    , mSeparatorMatcher(QStringLiteral("^From .*[0-9][0-9]:[0-9][0-9]"))
+    , mLockType(MBox::None)
+    , mFileLocked(false)
+    , mReadOnly(false)
 {
     connect(&mUnlockTimer, &QTimer::timeout, this, &MBoxPrivate::unlockMBox);
 }
@@ -47,11 +51,11 @@ bool MBoxPrivate::open()
 
     QIODevice::OpenMode mode = mReadOnly ? QIODevice::ReadOnly : QIODevice::ReadWrite;
 
-    if ( !mMboxFile.open( mode ) ) { // messages file
+    if (!mMboxFile.open(mode)) {     // messages file
         // failed to open readWrite -> try to open readOnly
-        if ( !mMboxFile.open( QIODevice::ReadOnly ) ) {
+        if (!mMboxFile.open(QIODevice::ReadOnly)) {
             qCDebug(KMBOX_LOG) << "Cannot open mbox file `" << mMboxFile.fileName() << "' FileError:"
-                     << mMboxFile.errorString();
+                               << mMboxFile.errorString();
             return false;
         } else {
             mReadOnly = true;

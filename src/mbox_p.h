@@ -34,7 +34,7 @@ class MBoxPrivate : public QObject
 public:
     MBoxPrivate(MBox *mbox);
 
-    virtual ~MBoxPrivate();
+    ~MBoxPrivate() override;
 
     void close();
 

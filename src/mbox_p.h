@@ -40,11 +40,11 @@ public:
 
     void initLoad(const QString &fileName);
 
-    bool open();
+    Q_REQUIRED_RESULT bool open();
 
-    bool startTimerIfNeeded();
+    Q_REQUIRED_RESULT bool startTimerIfNeeded();
 
-    bool isMBoxSeparator(const QByteArray &line) const;
+    Q_REQUIRED_RESULT bool isMBoxSeparator(const QByteArray &line) const;
 
 public Q_SLOTS:
     void unlockMBox();

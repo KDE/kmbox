@@ -88,25 +88,25 @@ public:
     /**
      * Returns whether this is a valid mbox entry object.
      */
-    bool isValid() const;
+    Q_REQUIRED_RESULT bool isValid() const;
 
     /**
      * Returns the offset of the message that is referenced by this
      * mbox entry object.
      */
-    quint64 messageOffset() const;
+    Q_REQUIRED_RESULT quint64 messageOffset() const;
 
     /**
      * Returns the size of the message that is referenced by this
      * mbox entry object.
      */
-    quint64 messageSize() const;
+    Q_REQUIRED_RESULT quint64 messageSize() const;
 
     /**
      * Returns the separator size of the message that is referenced by this
      * mbox entry object.
      */
-    quint64 separatorSize() const;
+    Q_REQUIRED_RESULT quint64 separatorSize() const;
 
 private:
     //@cond PRIVATE

@@ -4,8 +4,8 @@ set(PIM_VERSION "5.10.40")
 project(KMbox VERSION ${PIM_VERSION})
 
 # ECM setup
-set(KF5_VERSION "5.53.0")
-find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
+set(KF5_MIN_VERSION "5.53.0")
+find_package(ECM ${KF5_MIN_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)

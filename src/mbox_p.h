@@ -66,7 +66,7 @@ public: /// Static helper methods
     static QByteArray escapeFrom(const QByteArray &msg);
 
     /**
-     * Generates a mbox message sperator line for given message.
+     * Generates a mbox message separator line for given message.
      */
     static QByteArray mboxMessageSeparator(const QByteArray &msg);
 

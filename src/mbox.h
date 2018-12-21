@@ -248,8 +248,8 @@ public:
     /**
      * Returns if the current access mode is set to readOnly.
      *
-     * The access mode can either be set explicitely with setReadOnly() or
-     * implicitely by calling load() on a readOnly file.
+     * The access mode can either be set explicitly with setReadOnly() or
+     * implicitly by calling load() on a readOnly file.
      *
      * @since 4.14.5
      */

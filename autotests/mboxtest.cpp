@@ -181,7 +181,7 @@ void MboxTest::testAppend()
 
     QVERIFY(mbox.load(fileName()));
 
-    // First message added to an emtpy file should be at offset 0
+    // First message added to an empty file should be at offset 0
     QCOMPARE(mbox.entries().size(), 0);
     QCOMPARE(mbox.appendMessage(mMail1).messageOffset(), static_cast<quint64>(0));
     QCOMPARE(mbox.entries().size(), 1);

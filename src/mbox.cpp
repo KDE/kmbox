@@ -339,7 +339,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
     if (deletedEntries.size() == d->mEntries.size()) {
         d->mEntries.clear();
         d->mMboxFile.resize(0);
-        qCDebug(KMBOX_LOG) << "Purge comleted successfully, unlocking the file.";
+        qCDebug(KMBOX_LOG) << "Purge completed successfully, unlocking the file.";
         return unlock();
     }
 
@@ -409,7 +409,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
     d->mMboxFile.resize(writeOffset);
     d->mEntries = resultingEntryList;
 
-    qCDebug(KMBOX_LOG) << "Purge comleted successfully, unlocking the file.";
+    qCDebug(KMBOX_LOG) << "Purge completed successfully, unlocking the file.";
     if (movedEntries) {
         *movedEntries = tmpMovedEntries;
     }
@@ -666,7 +666,7 @@ bool MBox::unlock()
 
     switch (d->mLockType) {
     case ProcmailLockfile:
-        // QFile::remove returns true on succes so negate the result.
+        // QFile::remove returns true on success so negate the result.
         if (!d->mLockFileName.isEmpty()) {
             rc = !QFile(d->mLockFileName).remove();
         } else {

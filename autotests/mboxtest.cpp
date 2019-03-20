@@ -195,8 +195,8 @@ void MboxTest::testAppend()
     QCOMPARE(mbox.entries().last().messageSize(), static_cast<quint64>(sEntry2.size()));
 
     // check if appended entries can be read
-    MBoxEntry::List list = mbox.entries();
-    foreach (const MBoxEntry &msgInfo, list) {
+    const MBoxEntry::List list = mbox.entries();
+    for (const MBoxEntry &msgInfo : list) {
         const QByteArray header = mbox.readMessageHeaders(msgInfo);
         QVERIFY(!header.isEmpty());
 
@@ -433,7 +433,7 @@ void MboxTest::testHeaders()
 
     const MBoxEntry::List list = mbox.entries();
 
-    foreach (const MBoxEntry &msgInfo, list) {
+    for (const MBoxEntry &msgInfo : list) {
         const QByteArray header = mbox.readMessageHeaders(msgInfo);
         QVERIFY(!header.isEmpty());
 

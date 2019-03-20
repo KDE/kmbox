@@ -35,6 +35,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+add_definitions(-DQT_NO_FOREACH)
 
 ########### Targets ###########
 add_subdirectory(src)

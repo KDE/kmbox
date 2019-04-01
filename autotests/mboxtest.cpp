@@ -21,7 +21,7 @@
 #include <QDir>
 #include <QFile>
 
-#include <qtest.h>
+#include <QTest>
 #include <QStandardPaths>
 #include <QTemporaryDir>
 

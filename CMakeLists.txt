@@ -35,7 +35,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 
 # workaround for https://bugreports.qt.io/browse/QTBUG-74665 (bug in qt5.13 reevaluate it)
-if (${Qt5Core_VERSION} STRGREATER "5.13")
+if (${Qt5Core_VERSION} STREQUAL "5.13.0")
    MESSAGE(STATUS "Qt version: ${Qt5Core_VERSION} DISABLE compile without deprecated methods. bug QTBUG-74665")
 else()
    add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)

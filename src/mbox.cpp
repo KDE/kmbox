@@ -566,7 +566,7 @@ QByteArray MBox::readMessageHeaders(const MBoxEntry &entry)
 
 bool MBox::save(const QString &fileName)
 {
-    if (!fileName.isEmpty() && QUrl(fileName).toLocalFile() != d->mMboxFile.fileName()) {
+    if (!fileName.isEmpty() && QUrl::fromUserInput(fileName).toLocalFile() != d->mMboxFile.fileName()) {
         if (!d->mMboxFile.copy(fileName)) {
             return false;
         } else {
@@ -611,7 +611,6 @@ bool MBox::save(const QString &fileName)
     d->mMboxFile.write(d->mAppendedEntries);
     d->mAppendedEntries.clear();
     d->mInitialMboxFileSize = d->mMboxFile.size();
-
     return unlock();
 }
 

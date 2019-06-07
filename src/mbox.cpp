@@ -203,7 +203,7 @@ bool MBox::load(const QString &fileName)
 
     // FIXME: What if unlock fails?
     // if no separator was found, the file is still valid if it is empty
-    const bool val = unlock() || (prevSeparator.isEmpty() && (d->mMboxFile.size() == 0));
+    const bool val = unlock() && (!prevSeparator.isEmpty() || (d->mMboxFile.size() == 0));
     return val;
 }
 

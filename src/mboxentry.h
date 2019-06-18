@@ -23,7 +23,6 @@
 #include "kmbox_export.h"
 
 #include <QVector>
-#include <QMetaType>
 #include <QPair>
 #include <QSharedDataPointer>
 

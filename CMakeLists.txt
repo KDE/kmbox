@@ -24,7 +24,7 @@ include(ECMQtDeclareLoggingCategory)
 
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "5.13.40")
+set(KMIME_LIB_VERSION "5.13.80")
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h"
@@ -37,7 +37,7 @@ find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 
 if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
    add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
-   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x058000)
+   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054400)
 endif()
 
 add_definitions(-DQT_NO_FOREACH)

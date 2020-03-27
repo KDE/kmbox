@@ -293,7 +293,6 @@ void MboxTest::testBlankLines()
         mbox1.appendMessage(mail);
         mbox1.save();
 
-        MBox mbox2;
         QVERIFY(mbox1.setLockType(MBox::None));
         QVERIFY(mbox1.load(fileName()));
         QCOMPARE(mbox1.entries().size(), 3);

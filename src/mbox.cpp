@@ -311,7 +311,7 @@ static bool lessThanByOffset(const MBoxEntry &left, const MBoxEntry &right)
     return left.messageOffset() < right.messageOffset();
 }
 
-bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *movedEntries)
+bool MBox::purge(const MBoxEntry::List &deletedEntries, QVector<MBoxEntry::Pair> *movedEntries)
 {
     if (d->mMboxFile.fileName().isEmpty() || d->mReadOnly) {
         return false; // No file loaded yet or it's readOnly
@@ -348,7 +348,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
     quint64 writeOffset = 0;
     bool writeOffSetInitialized = false;
     MBoxEntry::List resultingEntryList;
-    QList<MBoxEntry::Pair> tmpMovedEntries;
+    QVector<MBoxEntry::Pair> tmpMovedEntries;
 
     quint64 origFileSize = d->mMboxFile.size();
 

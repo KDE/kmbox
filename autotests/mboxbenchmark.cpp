@@ -49,6 +49,7 @@ void MBoxBenchmark::initTestCase()
 void MBoxBenchmark::cleanupTestCase()
 {
     mTempDir->remove();
+    delete mTempDir;
 }
 
 void MBoxBenchmark::testNoLockPerformance()
@@ -70,7 +71,8 @@ void MBoxBenchmark::testNoLockPerformance()
         mbox2.load(fileName());
         const auto lst = mbox2.entries();
         for (const MBoxEntry &entry : lst) {
-            mbox2.readMessage(entry);
+            auto mail = mbox2.readMessage(entry);
+            delete mail;
         }
     }
 }
@@ -98,7 +100,8 @@ void MBoxBenchmark::testProcfileLockPerformance()
 
         const auto lst = mbox2.entries();
         for (const MBoxEntry &entry : lst) {
-            mbox2.readMessage(entry);
+            auto mail = mbox2.readMessage(entry);
+            delete mail;
         }
     }
 }

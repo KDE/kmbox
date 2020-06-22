@@ -502,6 +502,7 @@ void MboxTest::testReadOnlyMbox()
 void MboxTest::cleanupTestCase()
 {
     mTempDir->remove();
+    delete mTempDir;
 }
 
 //---------------------------------------------------------------------

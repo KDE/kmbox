@@ -41,7 +41,7 @@ public:
     MBoxEntry::List mEntries;
     quint64 mInitialMboxFileSize = 0;
     QString mLockFileName;
-    MBox *mMBox = nullptr;
+    MBox *const mMBox;
     QFile mMboxFile;
     QTimer mUnlockTimer;
     QRegExp mSeparatorMatcher;

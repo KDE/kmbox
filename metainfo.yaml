@@ -12,7 +12,7 @@ portingAid: false
 deprecated: false
 release: false
 libraries:
- - qmake: Mbox
+ - qmake: KMbox
    cmake: "KF5::Mbox"
 cmakename: KF5Mbox
 

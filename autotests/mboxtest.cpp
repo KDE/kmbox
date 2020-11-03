@@ -191,7 +191,7 @@ void MboxTest::testAppend()
         KMime::Message *message = mbox.readMessage(msgInfo);
         QVERIFY(message != nullptr);
 
-        KMime::Message *headers = new KMime::Message();
+        auto *headers = new KMime::Message();
         headers->setHead(KMime::CRLFtoLF(header));
         headers->parse();
 
@@ -427,7 +427,7 @@ void MboxTest::testHeaders()
         KMime::Message *message = mbox.readMessage(msgInfo);
         QVERIFY(message != nullptr);
 
-        KMime::Message *headers = new KMime::Message();
+        auto *headers = new KMime::Message();
         headers->setHead(KMime::CRLFtoLF(header));
         headers->parse();
 

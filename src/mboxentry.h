@@ -27,7 +27,7 @@ public:
     /**
      * Describes a list of mbox entry objects.
      */
-    typedef QVector<MBoxEntry> List;
+    using List = QVector<MBoxEntry>;
 
     /**
      * Describes a pair of mbox entry objects.

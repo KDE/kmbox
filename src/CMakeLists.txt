@@ -11,7 +11,7 @@ ecm_qt_declare_logging_category(kmbox_SRCS HEADER kmbox_debug.h IDENTIFIER KMBOX
 
 
 add_library(KF5Mbox ${kmbox_SRCS})
-if (COMPILE_WITH_CMAKE_SUPPORT)
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(KF5Mbox PROPERTIES UNITY_BUILD ON)
 endif()
 

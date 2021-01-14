@@ -280,7 +280,7 @@ bool MBox::lock()
         if (!d->open()) {
             const bool unlocked = unlock();
             Q_ASSERT(unlocked);   // If this fails we're in trouble.
-            Q_UNUSED(unlocked);
+            Q_UNUSED(unlocked)
         }
     }
 
@@ -486,7 +486,7 @@ QByteArray MBox::readRawMessage(const MBoxEntry &entry)
         if (!d->startTimerIfNeeded()) {
             const bool unlocked = unlock();
             Q_ASSERT(unlocked);
-            Q_UNUSED(unlocked);
+            Q_UNUSED(unlocked)
         }
     }
 

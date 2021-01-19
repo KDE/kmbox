@@ -9,6 +9,7 @@
 
 #include "kmbox_export.h"
 #include "mboxentry.h"
+#include <memory>
 
 #include <kmime/kmime_message.h>
 
@@ -245,8 +246,7 @@ public:
 private:
     //@cond PRIVATE
     Q_DISABLE_COPY(MBox)
-    friend class MBoxPrivate;
-    MBoxPrivate *const d;
+    std::unique_ptr<class MBoxPrivate> const d;
     //@endcond
 };
 }

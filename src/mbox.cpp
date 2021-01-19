@@ -43,7 +43,6 @@ MBox::~MBox()
 
     d->close();
 
-    delete d;
 }
 
 // Appended entries works as follows: When an mbox file is loaded from disk,

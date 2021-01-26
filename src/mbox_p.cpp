@@ -7,8 +7,8 @@
 #include "mbox_p.h"
 
 #include "kmbox_debug.h"
-#include <QUrl>
 #include <QLocale>
+#include <QUrl>
 
 using namespace KMBox;
 
@@ -30,16 +30,15 @@ MBoxPrivate::~MBoxPrivate()
 bool MBoxPrivate::open()
 {
     if (mMboxFile.isOpen()) {
-        return true;  // already open
+        return true; // already open
     }
 
     QIODevice::OpenMode mode = mReadOnly ? QIODevice::ReadOnly : QIODevice::ReadWrite;
 
-    if (!mMboxFile.open(mode)) {     // messages file
+    if (!mMboxFile.open(mode)) { // messages file
         // failed to open readWrite -> try to open readOnly
         if (!mMboxFile.open(QIODevice::ReadOnly)) {
-            qCDebug(KMBOX_LOG) << "Cannot open mbox file `" << mMboxFile.fileName() << "' FileError:"
-                               << mMboxFile.errorString();
+            qCDebug(KMBOX_LOG) << "Cannot open mbox file `" << mMboxFile.fileName() << "' FileError:" << mMboxFile.errorString();
             return false;
         } else {
             mReadOnly = true;
@@ -112,7 +111,7 @@ QByteArray MBoxPrivate::mboxMessageSeparator(const QByteArray &msg)
     return separator;
 }
 
-#define STRDIM(x) (sizeof(x)/sizeof(*x)-1)
+#define STRDIM(x) (sizeof(x) / sizeof(*x) - 1)
 
 QByteArray MBoxPrivate::escapeFrom(const QByteArray &str)
 {
@@ -178,10 +177,10 @@ void MBoxPrivate::unescapeFrom(char *str, size_t strLen)
     const char *const e = str + strLen - STRDIM(">From ");
 
     while (s < e) {
-        if (*s == '\n' && *(s + 1) == '>') {     // we can do the lookahead,
+        if (*s == '\n' && *(s + 1) == '>') { // we can do the lookahead,
             // since e is 6 chars from the end!
-            *d++ = *s++;  // == '\n'
-            *d++ = *s++;  // == '>'
+            *d++ = *s++; // == '\n'
+            *d++ = *s++; // == '>'
 
             while (s < e && *s == '>') {
                 *d++ = *s++;
@@ -199,14 +198,14 @@ void MBoxPrivate::unescapeFrom(char *str, size_t strLen)
         *d++ = *s++;
     }
 
-    if (d < s) {   // only NUL-terminate if it's shorter
+    if (d < s) { // only NUL-terminate if it's shorter
         *d = 0;
     }
 }
 
 bool MBoxPrivate::isMBoxSeparator(const QByteArray &line) const
 {
-    if (!line.startsWith("From ")) {      //krazy:exclude=strings
+    if (!line.startsWith("From ")) { // krazy:exclude=strings
         return false;
     }
 

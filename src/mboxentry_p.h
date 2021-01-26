@@ -9,7 +9,8 @@
 
 #include <QSharedData>
 
-namespace KMBox {
+namespace KMBox
+{
 class MBoxEntryPrivate : public QSharedData
 {
 public:

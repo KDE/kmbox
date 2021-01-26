@@ -9,9 +9,9 @@
 #include <QDir>
 #include <QFile>
 
-#include <QTest>
 #include <QStandardPaths>
 #include <QTemporaryDir>
+#include <QTest>
 
 QTEST_MAIN(MboxTest)
 
@@ -143,7 +143,7 @@ void MboxTest::testConcurrentAccess()
         QVERIFY(false);
     }
 
-    ThreadFillsMBox thread(fileName());    // locks the mbox file and adds a new message
+    ThreadFillsMBox thread(fileName()); // locks the mbox file and adds a new message
     thread.start();
 
     QVERIFY(mbox.load(fileName()));
@@ -327,7 +327,7 @@ void MboxTest::testEntries()
     infos2 = mbox1.entries(deletedEntries);
     QCOMPARE(infos2.size(), 0);
 
-    QVERIFY(!deletedEntries.contains(MBoxEntry(10)));       // some random offset
+    QVERIFY(!deletedEntries.contains(MBoxEntry(10))); // some random offset
     infos2 = mbox1.entries(MBoxEntry::List() << MBoxEntry(10));
     QCOMPARE(infos2.size(), 3);
     QCOMPARE(infos2.at(0), infos.at(0));
@@ -353,7 +353,7 @@ void MboxTest::testPurge()
     MBox mbox2;
     QVERIFY(mbox2.load(fileName()));
     MBoxEntry::List list2 = mbox2.entries();
-    QCOMPARE(list2.size(), 2);   // Is a message actually gone?
+    QCOMPARE(list2.size(), 2); // Is a message actually gone?
 
     quint64 newOffsetSecondMessage = list.last().messageOffset() - list.at(1).messageOffset();
 
@@ -374,7 +374,7 @@ void MboxTest::testPurge()
     mbox1.purge(MBoxEntry::List() << list.at(0) << list.at(1));
     QVERIFY(mbox2.load(fileName()));
     list2 = mbox2.entries();
-    QCOMPARE(list2.size(), 1);   // Are the messages actually gone?
+    QCOMPARE(list2.size(), 1); // Are the messages actually gone?
     QCOMPARE(list2.first().messageOffset(), static_cast<quint64>(0));
 
     // Third test: Delete all messages.
@@ -391,7 +391,7 @@ void MboxTest::testPurge()
     mbox1.purge(MBoxEntry::List() << list.at(0) << list.at(1) << list.at(2));
     QVERIFY(mbox2.load(fileName()));
     list2 = mbox2.entries();
-    QCOMPARE(list2.size(), 0);   // Are the messages actually gone?
+    QCOMPARE(list2.size(), 0); // Are the messages actually gone?
 }
 
 void MboxTest::testLockTimeout()
@@ -461,7 +461,7 @@ void MboxTest::testReadOnlyMbox()
     // this still works since we could save it to a different file
     MBoxEntry entry = mbox.appendMessage(mMail1);
 
-    QVERIFY(!mbox.save());  // original mbox is read-only
+    QVERIFY(!mbox.save()); // original mbox is read-only
 
     // reading back the appended message (from memory)
     QByteArray msg = mbox.readRawMessage(entry);
@@ -472,10 +472,10 @@ void MboxTest::testReadOnlyMbox()
     msg = mbox.readRawMessage(list.at(0));
     QVERIFY(!msg.isEmpty());
 
-    QVERIFY(!mbox.purge(list));  // original mbox is read-only
+    QVERIFY(!mbox.purge(list)); // original mbox is read-only
 
     QString tmpSaved = mTempDir->path() + QLatin1String("tempSaved.mbox");
-    QVERIFY(mbox.save(tmpSaved));  // other mbox file can be written
+    QVERIFY(mbox.save(tmpSaved)); // other mbox file can be written
 
     MBox savedMbox;
     savedMbox.setReadOnly();
@@ -511,8 +511,7 @@ void ThreadFillsMBox::run()
     file.open(QIODevice::WriteOnly | QIODevice::Append);
 
     QByteArray message = KMime::CRLFtoLF(sEntry1);
-    file.write(QByteArray("From test@local.local ")
-               +QDateTime::currentDateTime().toString(Qt::ISODate).toUtf8() + "\n");
+    file.write(QByteArray("From test@local.local ") + QDateTime::currentDateTime().toString(Qt::ISODate).toUtf8() + "\n");
     file.write(message);
     file.write("\n\n");
     file.close();

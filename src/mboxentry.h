@@ -9,11 +9,12 @@
 
 #include "kmbox_export.h"
 
-#include <QVector>
 #include <QPair>
 #include <QSharedDataPointer>
+#include <QVector>
 
-namespace KMBox {
+namespace KMBox
+{
 class MBoxEntryPrivate;
 /**
  * @short A class that encapsulates an entry of a MBox.

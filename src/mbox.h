@@ -13,7 +13,8 @@
 
 #include <kmime/kmime_message.h>
 
-namespace KMBox {
+namespace KMBox
+{
 class MBoxPrivate;
 
 /**
@@ -28,12 +29,7 @@ public:
     /**
      * Describes the type of locking that will be used.
      */
-    enum LockType {
-        ProcmailLockfile,
-        MuttDotlock,
-        MuttDotlockPrivileged,
-        None
-    };
+    enum LockType { ProcmailLockfile, MuttDotlock, MuttDotlockPrivileged, None };
 
     /**
      * Creates a new mbox object.

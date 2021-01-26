@@ -8,8 +8,8 @@
 
 #include <QCryptographicHash>
 
-#include <QTest>
 #include <QTemporaryDir>
+#include <QTest>
 
 QTEST_MAIN(MBoxBenchmark)
 
@@ -83,7 +83,7 @@ void MBoxBenchmark::testProcfileLockPerformance()
         MBox mbox2;
         mbox2.setLockType(MBox::ProcmailLockfile);
         mbox2.load(fileName());
-        mbox2.setUnlockTimeout(5000);   // Keep the mbox locked for five seconds.
+        mbox2.setUnlockTimeout(5000); // Keep the mbox locked for five seconds.
 
         const auto lst = mbox2.entries();
         for (const MBoxEntry &entry : lst) {
@@ -113,8 +113,7 @@ void MBoxBenchmark::voidTestMD5Performance()
         QCryptographicHash hash(QCryptographicHash::Md5);
         qint64 blockSize = 512 * 1024; // Read blocks of 512K
 
-        while (!file.atEnd())
-        {
+        while (!file.atEnd()) {
             hash.addData(file.read(blockSize));
         }
 

@@ -42,7 +42,6 @@ MBox::~MBox()
     }
 
     d->close();
-
 }
 
 // Appended entries works as follows: When an mbox file is loaded from disk,
@@ -57,8 +56,7 @@ MBoxEntry MBox::appendMessage(const KMime::Message::Ptr &entry)
     const QByteArray rawEntry = MBoxPrivate::escapeFrom(entry->encodedContent());
 
     if (rawEntry.size() <= 0) {
-        qCDebug(KMBOX_LOG) << "Message added to folder `" << d->mMboxFile.fileName()
-                           << "' contains no data. Ignoring it.";
+        qCDebug(KMBOX_LOG) << "Message added to folder `" << d->mMboxFile.fileName() << "' contains no data. Ignoring it.";
         return MBoxEntry();
     }
 
@@ -66,7 +64,7 @@ MBoxEntry MBox::appendMessage(const KMime::Message::Ptr &entry)
 
     // Make sure the byte array is large enough to check for an end character.
     // Then check if the required newlines are there.
-    if (nextOffset < 1 && d->mMboxFile.size() > 0) {   // Empty, add one empty line
+    if (nextOffset < 1 && d->mMboxFile.size() > 0) { // Empty, add one empty line
         d->mAppendedEntries.append("\n");
         ++nextOffset;
     } else if (nextOffset == 1 && d->mAppendedEntries.at(0) != '\n') {
@@ -142,7 +140,7 @@ bool MBox::load(const QString &fileName)
         return false;
     }
 
-    d->mInitialMboxFileSize = d->mMboxFile.size();  // AFTER the file has been locked
+    d->mInitialMboxFileSize = d->mMboxFile.size(); // AFTER the file has been locked
 
     QByteArray line;
     QByteArray prevSeparator;
@@ -155,8 +153,7 @@ bool MBox::load(const QString &fileName)
 
         // if atEnd, use mail only if there was a separator line at all,
         // otherwise it's not a valid mbox
-        if (d->isMBoxSeparator(line)
-            || (d->mMboxFile.atEnd() && (prevSeparator.size() != 0))) {
+        if (d->isMBoxSeparator(line) || (d->mMboxFile.atEnd() && (prevSeparator.size() != 0))) {
             // if we are the at the file end, update pos to not forget the last line
             if (d->mMboxFile.atEnd()) {
                 pos = d->mMboxFile.pos();
@@ -225,14 +222,12 @@ bool MBox::lock()
         if (!d->mLockFileName.isEmpty()) {
             args << QString::fromLocal8Bit(QFile::encodeName(d->mLockFileName));
         } else {
-            args << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()
-                                                             +QLatin1String(".lock")));
+            args << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName() + QLatin1String(".lock")));
         }
 
         rc = QProcess::execute(QStringLiteral("lockfile"), args);
         if (rc != 0) {
-            qCDebug(KMBOX_LOG) << "lockfile -l20 -r5 " << d->mMboxFile.fileName()
-                               << ": Failed (" << rc << ") switching to read only mode";
+            qCDebug(KMBOX_LOG) << "lockfile -l20 -r5 " << d->mMboxFile.fileName() << ": Failed (" << rc << ") switching to read only mode";
             d->mReadOnly = true; // In case the MBox object was created read/write we
             // set it to read only when locking failed.
         } else {
@@ -245,8 +240,7 @@ bool MBox::lock()
         rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
 
         if (rc != 0) {
-            qCDebug(KMBOX_LOG) << "mutt_dotlock " << d->mMboxFile.fileName()
-                               << ": Failed (" << rc << ") switching to read only mode";
+            qCDebug(KMBOX_LOG) << "mutt_dotlock " << d->mMboxFile.fileName() << ": Failed (" << rc << ") switching to read only mode";
             d->mReadOnly = true; // In case the MBox object was created read/write we
             // set it to read only when locking failed.
         } else {
@@ -255,8 +249,7 @@ bool MBox::lock()
         break;
 
     case MuttDotlockPrivileged:
-        args << QStringLiteral("-p")
-             << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
+        args << QStringLiteral("-p") << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
         rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
 
         if (rc != 0) {
@@ -278,7 +271,7 @@ bool MBox::lock()
     if (d->mFileLocked) {
         if (!d->open()) {
             const bool unlocked = unlock();
-            Q_ASSERT(unlocked);   // If this fails we're in trouble.
+            Q_ASSERT(unlocked); // If this fails we're in trouble.
             Q_UNUSED(unlocked)
         }
     }
@@ -345,9 +338,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QVector<MBoxEntry::Pair>
         if (deletedEntries.contains(entry) && !writeOffSetInitialized) {
             writeOffset = entry.messageOffset();
             writeOffSetInitialized = true;
-        } else if (writeOffSetInitialized
-                   && writeOffset < entry.messageOffset()
-                   && !deletedEntries.contains(entry)) {
+        } else if (writeOffSetInitialized && writeOffset < entry.messageOffset() && !deletedEntries.contains(entry)) {
             // The current message doesn't have to be deleted, but must be moved.
             // First determine the size of the entry that must be moved.
             quint64 entrySize = 0;
@@ -358,7 +349,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QVector<MBoxEntry::Pair>
                 entrySize = origFileSize - entry.messageOffset();
             }
 
-            Q_ASSERT(entrySize > 0);   // MBox entries really cannot have a size <= 0;
+            Q_ASSERT(entrySize > 0); // MBox entries really cannot have a size <= 0;
 
             // we map the whole area of the file starting at the writeOffset up to the
             // message that have to be moved into memory. This includes eventually the
@@ -381,8 +372,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QVector<MBoxEntry::Pair>
             resultEntry.d->mMessageSize = entry.messageSize();
 
             resultingEntryList << resultEntry;
-            tmpMovedEntries << MBoxEntry::Pair(MBoxEntry(entry.messageOffset()),
-                                               MBoxEntry(resultEntry.messageOffset()));
+            tmpMovedEntries << MBoxEntry::Pair(MBoxEntry(entry.messageOffset()), MBoxEntry(resultEntry.messageOffset()));
             writeOffset += entrySize;
         } else if (!deletedEntries.contains(entry)) {
             // Unmoved and not deleted entry, can only ocure before the first deleted
@@ -661,14 +651,12 @@ bool MBox::unlock()
         break;
 
     case MuttDotlock:
-        args << QStringLiteral("-u")
-             << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
+        args << QStringLiteral("-u") << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
         rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
         break;
 
     case MuttDotlockPrivileged:
-        args << QStringLiteral("-u") << QStringLiteral("-p")
-             << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
+        args << QStringLiteral("-u") << QStringLiteral("-p") << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName()));
         rc = QProcess::execute(QStringLiteral("mutt_dotlock"), args);
         break;
 
@@ -677,7 +665,7 @@ bool MBox::unlock()
         break;
     }
 
-    if (rc == 0) {   // Unlocking succeeded
+    if (rc == 0) { // Unlocking succeeded
         d->mFileLocked = false;
     }
 

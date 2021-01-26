@@ -13,7 +13,8 @@
 #include <QObject>
 #include <QTimer>
 
-namespace KMBox {
+namespace KMBox
+{
 class MBoxPrivate : public QObject
 {
     Q_OBJECT

@@ -4,8 +4,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef MBOXBENCHMARK_H
-#define MBOXBENCHMARK_H
+#pragma once
 
 #include <QObject>
 
@@ -31,4 +30,3 @@ private:
     KMime::Message::Ptr mMail1;
 };
 
-#endif // MBOXBENCHMARK_H

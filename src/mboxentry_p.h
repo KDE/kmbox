@@ -4,8 +4,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KMBOX_MBOXENTRY_P_H
-#define KMBOX_MBOXENTRY_P_H
+#pragma once
 
 #include <QSharedData>
 
@@ -32,4 +31,3 @@ public:
 };
 }
 
-#endif // KMBOX_MBOXENTRY_P_H

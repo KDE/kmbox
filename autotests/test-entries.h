@@ -4,8 +4,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef TEST_ENTRIES_H
-#define TEST_ENTRIES_H
+#pragma once
 
 #include <QByteArray>
 
@@ -161,4 +160,3 @@ const QByteArray sEntry2(
     "\n"
     "Bertjan");
 
-#endif

@@ -4,8 +4,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KMBOX_MBOX_P_H
-#define KMBOX_MBOX_P_H
+#pragma once
 
 #include "mbox.h"
 
@@ -65,4 +64,3 @@ public: /// Static helper methods
 };
 }
 
-#endif // KMBOX_MBOX_P_H

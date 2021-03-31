@@ -4,8 +4,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef MBOXTEST_H
-#define MBOXTEST_H
+#pragma once
 
 #include <QObject>
 #include <QThread>
@@ -58,4 +57,3 @@ private:
     KMBox::MBox *mbox = nullptr;
 };
 
-#endif // MBOXTEST_H

@@ -27,7 +27,7 @@ target_link_libraries(KF5Mbox
 )
 
 set_target_properties(KF5Mbox PROPERTIES
-    VERSION ${KMBOX_VERSION_STRING}
+    VERSION ${KMBOX_VERSION}
     SOVERSION ${KMBOX_SOVERSION}
     EXPORT_NAME Mbox
 )

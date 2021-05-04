@@ -32,7 +32,7 @@ public:
     /**
      * Describes a pair of mbox entry objects.
      */
-    typedef QPair<MBoxEntry, MBoxEntry> Pair;
+    using Pair = QPair<MBoxEntry, MBoxEntry>;
 
     /**
      * Creates an invalid mbox entry object.

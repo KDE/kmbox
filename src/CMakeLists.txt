@@ -1,23 +1,23 @@
-set(kmbox_SRCS
+add_library(KF5Mbox)
+add_library(KF5::Mbox ALIAS KF5Mbox)
+
+target_sources(KF5Mbox PRIVATE
     mboxentry.cpp
     mbox_p.cpp
     mbox.cpp
 )
 
-ecm_qt_declare_logging_category(kmbox_SRCS HEADER kmbox_debug.h IDENTIFIER KMBOX_LOG CATEGORY_NAME org.kde.pim.kmbox
+ecm_qt_declare_logging_category(KF5Mbox HEADER kmbox_debug.h IDENTIFIER KMBOX_LOG CATEGORY_NAME org.kde.pim.kmbox
         OLD_CATEGORY_NAMES log_kmbox
         DESCRIPTION "kmbox (pim lib)" EXPORT KMBOX)
 
 
-
-add_library(KF5Mbox ${kmbox_SRCS})
 if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(KF5Mbox PROPERTIES UNITY_BUILD ON)
 endif()
 
 generate_export_header(KF5Mbox BASE_NAME kmbox)
 
-add_library(KF5::Mbox ALIAS KF5Mbox)
 target_include_directories(KF5Mbox INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KMbox>")
 target_include_directories(KF5Mbox PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}/src;${KMbox_BINARY_DIR}/src>")
 

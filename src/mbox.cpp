@@ -113,7 +113,7 @@ MBoxEntry::List MBox::entries(const MBoxEntry::List &deletedEntries) const
     MBoxEntry::List result;
     result.reserve(d->mEntries.size());
 
-    for (const MBoxEntry &entry : qAsConst(d->mEntries)) {
+    for (const MBoxEntry &entry : std::as_const(d->mEntries)) {
         if (!deletedEntries.contains(entry)) {
             result << entry;
         }
@@ -304,7 +304,7 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QVector<MBoxEntry::Pair>
         return false;
     }
 
-    for (const MBoxEntry &entry : qAsConst(deletedEntries)) {
+    for (const MBoxEntry &entry : std::as_const(deletedEntries)) {
         d->mMboxFile.seek(entry.messageOffset());
         const QByteArray line = d->mMboxFile.readLine();
 

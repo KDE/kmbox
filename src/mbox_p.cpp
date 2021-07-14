@@ -127,7 +127,7 @@ QByteArray MBoxPrivate::escapeFrom(const QByteArray &str)
     const char *const e = s + strLen - STRDIM("From ");
     char *d = result.data();
 
-    bool onlyAnglesAfterLF = false; // dont' match ^From_
+    bool onlyAnglesAfterLF = false; // don't match ^From_
     while (s < e) {
         switch (*s) {
         case '\n':

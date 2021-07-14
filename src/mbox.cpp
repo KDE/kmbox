@@ -464,7 +464,7 @@ QByteArray MBox::readRawMessage(const MBoxEntry &entry)
         }
     }
 
-    // Remove te last '\n' added by writeEntry.
+    // Remove the last '\n' added by writeEntry.
     if (message.endsWith('\n')) {
         message.chop(1);
     }

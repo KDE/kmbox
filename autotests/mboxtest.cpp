@@ -173,14 +173,14 @@ void MboxTest::testAppend()
     QCOMPARE(mbox.entries().size(), 0);
     QCOMPARE(mbox.appendMessage(mMail1).messageOffset(), static_cast<quint64>(0));
     QCOMPARE(mbox.entries().size(), 1);
-    QVERIFY(mbox.entries().first().separatorSize() > 0);
-    QCOMPARE(mbox.entries().first().messageSize(), static_cast<quint64>(sEntry1.size()));
+    QVERIFY(mbox.entries().constFirst().separatorSize() > 0);
+    QCOMPARE(mbox.entries().constFirst().messageSize(), static_cast<quint64>(sEntry1.size()));
 
     const MBoxEntry offsetMail2 = mbox.appendMessage(mMail2);
     QVERIFY(offsetMail2.messageOffset() > static_cast<quint64>(sEntry1.size()));
     QCOMPARE(mbox.entries().size(), 2);
-    QVERIFY(mbox.entries().last().separatorSize() > 0);
-    QCOMPARE(mbox.entries().last().messageSize(), static_cast<quint64>(sEntry2.size()));
+    QVERIFY(mbox.entries().constLast().separatorSize() > 0);
+    QCOMPARE(mbox.entries().constLast().messageSize(), static_cast<quint64>(sEntry2.size()));
 
     // check if appended entries can be read
     const MBoxEntry::List list = mbox.entries();
@@ -232,7 +232,7 @@ void MboxTest::testSaveAndLoad()
     QCOMPARE(infos1.size(), 2);
 
     QVERIFY(mbox.save());
-    QVERIFY(QFileInfo(fileName()).exists());
+    QVERIFY(QFileInfo::exists(fileName()));
 
     MBoxEntry::List infos2 = mbox.entries();
     QCOMPARE(infos2.size(), 2);

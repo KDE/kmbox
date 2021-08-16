@@ -20,13 +20,14 @@ include(ECMSetupVersion)
 include(FeatureSummary)
 include(KDEGitCommitHooks)
 include(ECMQtDeclareLoggingCategory)
-
+include(ECMAddQch)
 
 
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
 set(KMIME_LIB_VERSION "5.18.40")
-
+option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5MboxConfigVersion.cmake"
@@ -75,6 +76,16 @@ install(FILES
    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}
    COMPONENT Devel
 )
+
+if (BUILD_QCH)
+    ecm_install_qch_export(
+        TARGETS KF5MBox_QCH
+        FILE KF5MBoxQchTargets.cmake
+        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+        COMPONENT Devel
+    )
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5MBoxQchTargets.cmake\")")
+endif()
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

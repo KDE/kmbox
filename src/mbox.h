@@ -10,7 +10,7 @@
 #include "mboxentry.h"
 #include <memory>
 
-#include <kmime/kmime_message.h>
+#include <KMime/KMimeMessage>
 
 namespace KMBox
 {

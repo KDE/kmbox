@@ -19,10 +19,10 @@ public:
 
     MBoxEntryPrivate(const MBoxEntryPrivate &other)
         : QSharedData(other)
+        , mOffset(other.mOffset)
+        , mMessageSize(other.mMessageSize)
+        , mSeparatorSize(other.mSeparatorSize)
     {
-        mOffset = other.mOffset;
-        mMessageSize = other.mMessageSize;
-        mSeparatorSize = other.mSeparatorSize;
     }
 
     quint64 mOffset = 0;

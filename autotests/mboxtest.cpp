@@ -287,9 +287,9 @@ void MboxTest::testBlankLines()
 
         quint64 minSize = sEntry1.size() + i - 1; // Possibly on '\n' falls off.
         quint64 maxSize = sEntry1.size() + i;
-        for (int i = 0; i < 3; ++i) {
-            QVERIFY(mbox1.entries().at(i).messageSize() >= minSize);
-            QVERIFY(mbox1.entries().at(i).messageSize() <= maxSize);
+        for (int j = 0; j < 3; ++j) {
+            QVERIFY(mbox1.entries().at(j).messageSize() >= minSize);
+            QVERIFY(mbox1.entries().at(j).messageSize() <= maxSize);
         }
     }
 }

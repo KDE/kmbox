@@ -5,6 +5,10 @@ target_sources(KF5Mbox PRIVATE
     mboxentry.cpp
     mbox_p.cpp
     mbox.cpp
+    mboxentry.h
+    mbox.h
+    mbox_p.h
+    mboxentry_p.h
 )
 
 ecm_qt_declare_logging_category(KF5Mbox HEADER kmbox_debug.h IDENTIFIER KMBOX_LOG CATEGORY_NAME org.kde.pim.kmbox

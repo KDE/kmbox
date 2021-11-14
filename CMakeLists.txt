@@ -4,7 +4,7 @@ set(PIM_VERSION "5.19.40")
 project(KMbox VERSION ${PIM_VERSION})
 
 # ECM setup
-set(KF5_MIN_VERSION "5.87.0")
+set(KF5_MIN_VERSION "5.88.0")
 find_package(ECM ${KF5_MIN_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
@@ -29,7 +29,7 @@ include(ECMAddQch)
 
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "5.18.80")
+set(KMIME_LIB_VERSION "5.19.40")
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX

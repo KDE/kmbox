@@ -25,13 +25,16 @@ endif()
 
 generate_export_header(KF5Mbox BASE_NAME kmbox)
 
-target_include_directories(KF5Mbox INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KMbox>")
+target_include_directories(KF5Mbox INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KMbox>")
 target_include_directories(KF5Mbox PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}/src;${KMbox_BINARY_DIR}/src>")
 
 target_link_libraries(KF5Mbox
    PUBLIC
     KF5::Mime 
 )
+if (TARGET Qt6::Core5Compat)
+    target_link_libraries(KF5Mbox PRIVATE Qt6::Core5Compat) # QTextCodec
+endif()
 
 set_target_properties(KF5Mbox PROPERTIES
     VERSION ${KMBOX_VERSION}
@@ -52,7 +55,7 @@ ecm_generate_headers(KMbox_CamelCase_HEADERS
 
 install(FILES
     ${KMbox_CamelCase_HEADERS}
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KMbox/KMbox/
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KMbox/KMbox/
     COMPONENT Devel
 )
 
@@ -60,12 +63,12 @@ install(FILES
 install(FILES
   ${KMbox_BINARY_DIR}/src/kmbox_export.h
   ${KMbox_HEADERS}
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KMbox/kmbox
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KMbox/kmbox
     COMPONENT Devel
 )
 
 ecm_qt_install_logging_categories(EXPORT KMBOX FILE kmbox.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-ecm_generate_pri_file(BASE_NAME KMbox LIB_NAME KF5Mbox DEPS "KMime" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KMbox)
+ecm_generate_pri_file(BASE_NAME KMbox LIB_NAME KF5Mbox DEPS "KMime" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KMbox)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
 if (BUILD_QCH)

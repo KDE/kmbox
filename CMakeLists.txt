@@ -43,6 +43,9 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 
 ########### Find packages ###########
 find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Qt6Core5Compat)
+endif()
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055A00)
@@ -80,7 +83,7 @@ install(EXPORT KF5MboxTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF5M
 
 install(FILES
    ${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h
-   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}
+   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}
    COMPONENT Devel
 )
 

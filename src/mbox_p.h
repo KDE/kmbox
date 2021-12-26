@@ -10,6 +10,7 @@
 
 #include <QFile>
 #include <QObject>
+#include <QRegExp>
 #include <QTimer>
 
 namespace KMBox

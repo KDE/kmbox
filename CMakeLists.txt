@@ -48,7 +48,7 @@ if (QT_MAJOR_VERSION STREQUAL "6")
 endif()
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055A00)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055B00)
 
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 

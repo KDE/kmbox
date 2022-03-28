@@ -29,4 +29,3 @@ private:
     QTemporaryDir *mTempDir = nullptr;
     KMime::Message::Ptr mMail1;
 };
-

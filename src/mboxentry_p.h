@@ -30,4 +30,3 @@ public:
     quint64 mSeparatorSize = 0;
 };
 }
-

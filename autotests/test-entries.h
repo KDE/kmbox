@@ -159,4 +159,3 @@ const QByteArray sEntry2(
     "Cheers,\n"
     "\n"
     "Bertjan");
-

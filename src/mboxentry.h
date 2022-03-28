@@ -104,4 +104,3 @@ private:
 }
 
 Q_DECLARE_TYPEINFO(KMBox::MBoxEntry, Q_MOVABLE_TYPE);
-

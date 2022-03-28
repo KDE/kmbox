@@ -64,4 +64,3 @@ public: /// Static helper methods
     static void unescapeFrom(char *msg, size_t size);
 };
 }
-

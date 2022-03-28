@@ -56,4 +56,3 @@ protected:
 private:
     KMBox::MBox *mbox = nullptr;
 };
-

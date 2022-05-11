@@ -489,7 +489,7 @@ KMime::Message *MBox::readMessage(const MBoxEntry &entry)
         return nullptr;
     }
 
-    auto *mail = new KMime::Message();
+    auto mail = new KMime::Message();
     mail->setContent(KMime::CRLFtoLF(message));
     mail->parse();
 

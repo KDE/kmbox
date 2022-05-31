@@ -10,7 +10,7 @@
 
 #include <QFile>
 #include <QObject>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QTimer>
 
 namespace KMBox
@@ -45,7 +45,7 @@ public:
     MBox *const mMBox;
     QFile mMboxFile;
     QTimer mUnlockTimer;
-    QRegExp mSeparatorMatcher;
+    static const QRegularExpression mSeparatorMatcher;
     MBox::LockType mLockType;
     bool mFileLocked = false;
     bool mReadOnly = false;

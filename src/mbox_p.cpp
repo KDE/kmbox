@@ -12,9 +12,10 @@
 
 using namespace KMBox;
 
+const QRegularExpression MBoxPrivate::mSeparatorMatcher(QStringLiteral("^From .*[0-9][0-9]:[0-9][0-9]"));
+
 MBoxPrivate::MBoxPrivate(MBox *mbox)
     : mMBox(mbox)
-    , mSeparatorMatcher(QStringLiteral("^From .*[0-9][0-9]:[0-9][0-9]"))
     , mLockType(MBox::None)
 {
     connect(&mUnlockTimer, &QTimer::timeout, this, &MBoxPrivate::unlockMBox);
@@ -210,7 +211,7 @@ bool MBoxPrivate::isMBoxSeparator(const QByteArray &line) const
         return false;
     }
 
-    return mSeparatorMatcher.indexIn(QString::fromLatin1(line)) >= 0;
+    return mSeparatorMatcher.match(QLatin1String(line)).hasMatch();
 }
 
 #undef STRDIM

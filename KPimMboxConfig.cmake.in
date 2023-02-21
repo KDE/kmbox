@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2014 Christophe Giboudeaux <cgiboudeaux@gmx.com>
+# SPDX-License-Identifier: BSD-3-Clause
+
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(KF5Mime "@KMIME_LIB_VERSION@")
+
+if (@KMBOX_KF5_COMPAT@)
+    message(WARNING "\n"
+                    "************* DEPRECATION WARNING *************\n"
+		    "Using find_package(KF5MBox) and KF5::MBox targets is deprecated. "
+		    "Please use find_package(KPim@KF_MAJOR_VERSION@MBox) and KPim@KF_MAJOR_VERSION@::MBox instead. This backwards "
+                    "compatibility will be removed in the next major version.\n"
+                    "***********************************************\n")
+endif()
+
+
+include("${CMAKE_CURRENT_LIST_DIR}/KPim@KF_MAJOR_VERSION@MboxTargets.cmake")

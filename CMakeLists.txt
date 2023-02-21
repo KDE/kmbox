@@ -39,7 +39,7 @@ else()
 endif()
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "5.22.40")
+set(KMIME_LIB_VERSION "5.22.41")
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
@@ -49,7 +49,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 )
 
 ########### Find packages ###########
-find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
+find_package(KPim${KF_MAJOR_VERSION}Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 if (QT_MAJOR_VERSION STREQUAL "6")
     find_package(Qt6Core5Compat)
 endif()

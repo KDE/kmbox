@@ -30,7 +30,7 @@ target_include_directories(KPim${KF_MAJOR_VERSION}Mbox PUBLIC "$<BUILD_INTERFACE
 
 target_link_libraries(KPim${KF_MAJOR_VERSION}Mbox
    PUBLIC
-    KF5::Mime 
+    KPim${KF_MAJOR_VERSION}::Mime 
 )
 if (TARGET Qt6::Core5Compat)
     target_link_libraries(KPim${KF_MAJOR_VERSION}Mbox PRIVATE Qt6::Core5Compat) # QTextCodec

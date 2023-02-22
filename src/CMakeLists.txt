@@ -74,9 +74,9 @@ install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
 if (BUILD_QCH)
     ecm_add_qch(
-        KPim${KF_MAJOR_VERSION}MBox_QCH
-        NAME KMBox
-        BASE_NAME KPim${KF_MAJOR_VERSION}MBox
+        KPim${KF_MAJOR_VERSION}Mbox_QCH
+        NAME KMbox
+        BASE_NAME KPim${KF_MAJOR_VERSION}Mbox
         VERSION ${PIM_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API

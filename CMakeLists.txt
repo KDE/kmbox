@@ -66,7 +66,7 @@ endif()
 ##
 # TODO: Backwards compatiblity. Remove in next major version
 ##
-set(CMAKECONFIG_INSTALL_DIR_KF5 "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5MBox")
+set(CMAKECONFIG_INSTALL_DIR_KF5 "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Mbox")
 set(KMBOX_KF5_COMPAT TRUE)
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/KPimMboxConfig.cmake.in"
@@ -125,7 +125,7 @@ install(FILES
 
 if (BUILD_QCH)
     ecm_install_qch_export(
-        TARGETS KPim${KF_MAJOR_VERSION}MBox_QCH
+        TARGETS KPim${KF_MAJOR_VERSION}Mbox_QCH
         FILE KPim${KF_MAJOR_VERSION}MBoxQchTargets.cmake
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel

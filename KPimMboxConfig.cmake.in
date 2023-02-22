@@ -9,8 +9,8 @@ find_dependency(KPim@KF_MAJOR_VERSION@Mime "@KMIME_LIB_VERSION@")
 if (@KMBOX_KF5_COMPAT@)
     message(WARNING "\n"
                     "************* DEPRECATION WARNING *************\n"
-		    "Using find_package(KF5MBox) and KF5::MBox targets is deprecated. "
-		    "Please use find_package(KPim@KF_MAJOR_VERSION@MBox) and KPim@KF_MAJOR_VERSION@::MBox instead. This backwards "
+                    "Using find_package(KF5Mbox) and KF5::Mbox targets is deprecated. "
+                    "Please use find_package(KPim@KF_MAJOR_VERSION@Mbox) and KPim@KF_MAJOR_VERSION@::Mbox instead. This backwards "
                     "compatibility will be removed in the next major version.\n"
                     "***********************************************\n")
 endif()

@@ -40,6 +40,8 @@ endif()
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
 set(KMIME_LIB_VERSION "5.22.41")
+option(BUILD_WITH_COMPAT_LIBS "Generate compat cmake file (Set at false will allow to co-install lib)" ON)
+
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
@@ -63,6 +65,8 @@ if (USE_UNITY_CMAKE_SUPPORT)
     set(COMPILE_WITH_UNITY_CMAKE_SUPPORT ON)
 endif()
 
+if (BUILD_WITH_COMPAT_LIBS)
+if (QT_MAJOR_VERSION STREQUAL "5")
 ##
 # TODO: Backwards compatiblity. Remove in next major version
 ##
@@ -90,6 +94,8 @@ install(EXPORT KPim${KF_MAJOR_VERSION}MboxTargets
     FILE KPim${KF_MAJOR_VERSION}MboxTargets.cmake
     NAMESPACE KF5::
 )
+endif()
+endif()
 
 ########### Targets ###########
 add_subdirectory(src)

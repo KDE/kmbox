@@ -39,7 +39,7 @@ else()
 endif()
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "5.22.41")
+set(KMIME_LIB_VERSION "5.23.40")
 option(BUILD_WITH_COMPAT_LIBS "Generate compat cmake file (Set at false will allow to co-install lib)" ON)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)

@@ -73,6 +73,15 @@ endif()
 
 ########### CMake Config Files ###########
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KPim${KF_MAJOR_VERSION}Mbox")
+if (BUILD_QCH)
+    ecm_install_qch_export(
+        TARGETS KPim${KF_MAJOR_VERSION}Mbox_QCH
+        FILE KPim${KF_MAJOR_VERSION}MBoxQchTargets.cmake
+        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+        COMPONENT Devel
+    )
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KPim${KF_MAJOR_VERSION}MBoxQchTargets.cmake\")")
+endif()
 configure_package_config_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/KPimMboxConfig.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/KPim${KF_MAJOR_VERSION}MboxConfig.cmake"
@@ -94,16 +103,6 @@ install(FILES
    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/KPim${KF_MAJOR_VERSION}/KMbox
    COMPONENT Devel
 )
-
-if (BUILD_QCH)
-    ecm_install_qch_export(
-        TARGETS KPim${KF_MAJOR_VERSION}Mbox_QCH
-        FILE KPim${KF_MAJOR_VERSION}MBoxQchTargets.cmake
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        COMPONENT Devel
-    )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KPim${KF_MAJOR_VERSION}MBoxQchTargets.cmake\")")
-endif()
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

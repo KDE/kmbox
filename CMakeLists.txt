@@ -8,6 +8,7 @@ project(KMbox VERSION ${PIM_VERSION})
 
 # ECM setup
 set(KF_MIN_VERSION "5.240.0")
+set(QT_MIN_VERSION "6.4.0")
 find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
@@ -30,14 +31,6 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 include(ECMAddQch)
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_MIN_VERSION "6.4.0")
-    set(KF_MIN_VERSION "5.240.0")
-    set(KF_MAJOR_VERSION "6")
-else()
-    set(KF_MAJOR_VERSION "5")
-endif()
-
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
 set(KMIME_LIB_VERSION "5.23.40")
 
@@ -51,9 +44,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 
 ########### Find packages ###########
 find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(Qt6Core5Compat)
-endif()
+find_package(Qt6Core5Compat)
 
 ecm_set_disabled_deprecation_versions(QT 6.4  KF 5.105.0)
 

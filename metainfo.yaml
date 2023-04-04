@@ -13,8 +13,8 @@ deprecated: false
 release: false
 libraries:
  - qmake: KMbox
-   cmake: "KF5::Mbox"
-cmakename: KF5Mbox
+   cmake: "KPim6::Mbox"
+cmakename: KPim6Mbox
 
 public_lib: true
 group: kdepim

@@ -4,8 +4,8 @@
 kde_enable_exceptions()
 
 include(ECMAddTests)
-find_package(Qt${QT_MAJOR_VERSION}Test CONFIG REQUIRED)
+find_package(Qt6Test CONFIG REQUIRED)
 
 ########### next target ###############
 
-ecm_add_tests(mboxtest.cpp mboxbenchmark.cpp NAME_PREFIX "mbox-" LINK_LIBRARIES KPim${KF_MAJOR_VERSION}Mbox Qt::Test)
+ecm_add_tests(mboxtest.cpp mboxbenchmark.cpp NAME_PREFIX "mbox-" LINK_LIBRARIES KPim6Mbox Qt::Test)

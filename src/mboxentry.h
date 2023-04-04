@@ -8,9 +8,9 @@
 
 #include "kmbox_export.h"
 
+#include <QList>
 #include <QPair>
 #include <QSharedDataPointer>
-#include <QVector>
 
 namespace KMBox
 {
@@ -27,7 +27,7 @@ public:
     /**
      * Describes a list of mbox entry objects.
      */
-    using List = QVector<MBoxEntry>;
+    using List = QList<MBoxEntry>;
 
     /**
      * Describes a pair of mbox entry objects.

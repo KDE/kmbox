@@ -16,7 +16,7 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 
-include(GenerateExportHeader)
+include(ECMGenerateExportHeader)
 include(ECMGenerateHeaders)
 include(ECMGeneratePriFile)
 
@@ -37,7 +37,7 @@ set(KMIME_LIB_VERSION "5.23.40")
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
-                        VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h"
+                        VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPim6MboxConfigVersion.cmake"
                         SOVERSION 6
 )
@@ -90,7 +90,7 @@ install(EXPORT KPim6MboxTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
     FILE KPim6MboxTargets.cmake NAMESPACE KPim6::)
 
 install(FILES
-   ${CMAKE_CURRENT_BINARY_DIR}/kmbox_version.h
+   ${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h
    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox
    COMPONENT Devel
 )

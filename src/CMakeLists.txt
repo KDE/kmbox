@@ -42,7 +42,7 @@ set_target_properties(KPim${KF_MAJOR_VERSION}Mbox PROPERTIES
     EXPORT_NAME Mbox
 )
 
-install(TARGETS KPim${KF_MAJOR_VERSION}Mbox EXPORT KPim${KF_MAJOR_VERSION}MboxTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KPim${KF_MAJOR_VERSION}Mbox EXPORT KPim${KF_MAJOR_VERSION}MboxTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### Generate Headers ###############
 ecm_generate_headers(KMbox_CamelCase_HEADERS

@@ -36,9 +36,7 @@ target_link_libraries(KPim6Mbox
    PUBLIC
     KPim6::Mime 
 )
-if (TARGET Qt6::Core5Compat)
-    target_link_libraries(KPim6Mbox PRIVATE Qt6::Core5Compat) # QTextCodec
-endif()
+target_link_libraries(KPim6Mbox PRIVATE Qt6::Core5Compat) # QTextCodec
 
 set_target_properties(KPim6Mbox PROPERTIES
     VERSION ${KMBOX_VERSION}

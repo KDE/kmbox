@@ -120,3 +120,5 @@ void MBoxBenchmark::voidTestMD5Performance()
         file.close();
     }
 }
+
+#include "moc_mboxbenchmark.cpp"

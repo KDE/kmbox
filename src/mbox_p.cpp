@@ -215,3 +215,5 @@ bool MBoxPrivate::isMBoxSeparator(const QByteArray &line) const
 }
 
 #undef STRDIM
+
+#include "moc_mbox_p.cpp"

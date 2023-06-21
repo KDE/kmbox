@@ -519,3 +519,5 @@ void ThreadFillsMBox::run()
     mbox->unlock();
     delete mbox;
 }
+
+#include "moc_mboxtest.cpp"

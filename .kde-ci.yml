@@ -5,7 +5,7 @@ Dependencies:
 - 'on': ['Linux', 'FreeBSD', 'Windows', 'Android']
   'require':
     'frameworks/extra-cmake-modules': '@latest-kf6'
-    'pim/kmime' : '@latest-kf6'
+    'pim/kmime' : '@same'
 
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD', 'Windows' ]

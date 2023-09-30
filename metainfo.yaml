@@ -12,8 +12,7 @@ portingAid: false
 deprecated: false
 release: false
 libraries:
- - qmake: KMbox
-   cmake: "KPim6::Mbox"
+ - cmake: "KPim6::Mbox"
 cmakename: KPim6Mbox
 
 public_lib: true

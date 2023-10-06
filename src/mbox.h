@@ -52,7 +52,7 @@ public:
      * @return the corresponding mbox entry for the message in the file or an invalid mbox entry
      *         if the message was not added.
      */
-    Q_REQUIRED_RESULT MBoxEntry appendMessage(const KMime::Message::Ptr &message);
+    [[nodiscard]] MBoxEntry appendMessage(const KMime::Message::Ptr &message);
 
     /**
      * Retrieve the mbox entry objects for all emails from the file except the
@@ -61,12 +61,12 @@ public:
      * @param deletedEntries list of mbox entries that have been deleted and need not be retrieved
      * Note: One <em>must</em> call load() before calling this method.
      */
-    Q_REQUIRED_RESULT MBoxEntry::List entries(const MBoxEntry::List &deletedEntries = MBoxEntry::List()) const;
+    [[nodiscard]] MBoxEntry::List entries(const MBoxEntry::List &deletedEntries = MBoxEntry::List()) const;
 
     /**
      * Returns the file name that was passed to the last call to load().
      */
-    Q_REQUIRED_RESULT QString fileName() const;
+    [[nodiscard]] QString fileName() const;
 
     /**
      * Loads the raw mbox data from disk into the current MBox object. Messages
@@ -80,7 +80,7 @@ public:
      *
      * @see save( const QString & )
      */
-    Q_REQUIRED_RESULT bool load(const QString &fileName);
+    [[nodiscard]] bool load(const QString &fileName);
 
     /**
      * Locks the mbox file using the configured lock method. This can be used
@@ -94,12 +94,12 @@ public:
      *
      * @see setLockType( LockType ), unlock()
      */
-    Q_REQUIRED_RESULT bool lock();
+    [[nodiscard]] bool lock();
 
     /**
      * Returns whether or not the mbox currently is locked.
      */
-    Q_REQUIRED_RESULT bool locked() const;
+    [[nodiscard]] bool locked() const;
 
     /**
      * Removes all messages for the given mbox entries from the current reference file
@@ -119,7 +119,7 @@ public:
      *         loaded, false otherwise. If the latter, the physical file has
      *         not changed.
      */
-    Q_REQUIRED_RESULT bool purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *movedEntries = nullptr);
+    [[nodiscard]] bool purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *movedEntries = nullptr);
 
     /**
      * Reads the entire message from the file for the given mbox @p entry. If the
@@ -146,7 +146,7 @@ public:
      *
      * @see lock(), unlock()
      */
-    Q_REQUIRED_RESULT QByteArray readMessageHeaders(const MBoxEntry &entry);
+    [[nodiscard]] QByteArray readMessageHeaders(const MBoxEntry &entry);
 
     /**
      * Reads the entire message from the file for the given mbox @p entry. If the
@@ -159,7 +159,7 @@ public:
      *
      * @see lock(), unlock()
      */
-    Q_REQUIRED_RESULT QByteArray readRawMessage(const MBoxEntry &entry);
+    [[nodiscard]] QByteArray readRawMessage(const MBoxEntry &entry);
 
     /**
      * Writes the mbox to disk. If the fileName is empty only appended messages
@@ -172,7 +172,7 @@ public:
      *
      * @see load( const QString & )
      */
-    Q_REQUIRED_RESULT bool save(const QString &fileName = QString());
+    [[nodiscard]] bool save(const QString &fileName = QString());
 
     /**
      * Sets the locktype that should be used for locking the mbox file. If the
@@ -183,7 +183,7 @@ public:
      * to make sure that it doesn't leave a locked file for one of the lockfile
      * / mutt_dotlock methods.
      */
-    Q_REQUIRED_RESULT bool setLockType(LockType ltype);
+    [[nodiscard]] bool setLockType(LockType ltype);
 
     /**
      * Sets the lockfile that should be used by the procmail or the KDE lock
@@ -210,7 +210,7 @@ public:
      *
      * @see lock()
      */
-    Q_REQUIRED_RESULT bool unlock();
+    [[nodiscard]] bool unlock();
     /**
      * Set the access mode of the mbox file to read only.
      *
@@ -236,7 +236,7 @@ public:
      *
      * @since 4.14.5
      */
-    Q_REQUIRED_RESULT bool isReadOnly() const;
+    [[nodiscard]] bool isReadOnly() const;
 
 private:
     //@cond PRIVATE

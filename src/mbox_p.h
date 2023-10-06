@@ -28,11 +28,11 @@ public:
 
     void initLoad(const QString &fileName);
 
-    Q_REQUIRED_RESULT bool open();
+    [[nodiscard]] bool open();
 
-    Q_REQUIRED_RESULT bool startTimerIfNeeded();
+    [[nodiscard]] bool startTimerIfNeeded();
 
-    Q_REQUIRED_RESULT bool isMBoxSeparator(const QByteArray &line) const;
+    [[nodiscard]] bool isMBoxSeparator(const QByteArray &line) const;
 
 public Q_SLOTS:
     void unlockMBox();

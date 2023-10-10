@@ -142,7 +142,7 @@ QByteArray MBoxPrivate::escapeFrom(const QByteArray &str)
                 *d++ = '>';
             }
             // fall through
-            Q_FALLTHROUGH();
+            [[fallthrough]];
         default:
             onlyAnglesAfterLF = false;
             break;

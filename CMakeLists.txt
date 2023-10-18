@@ -45,6 +45,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 find_package(Qt6Core5Compat)
 
+add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 ecm_set_disabled_deprecation_versions(QT 6.5  KF 5.240.0)
 
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)

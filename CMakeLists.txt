@@ -43,7 +43,6 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 
 ########### Find packages ###########
 find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
-find_package(Qt6Core5Compat)
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 ecm_set_disabled_deprecation_versions(QT 6.6  KF 5.245.0)

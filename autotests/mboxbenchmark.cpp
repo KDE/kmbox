@@ -22,12 +22,12 @@ static const char *testFile = "test-mbox-file";
 
 QString MBoxBenchmark::fileName()
 {
-    return mTempDir->path() + QLatin1Char('/') + QLatin1String(testFile);
+    return mTempDir->path() + QLatin1Char('/') + QLatin1StringView(testFile);
 }
 
 void MBoxBenchmark::initTestCase()
 {
-    mTempDir = new QTemporaryDir(QDir::tempPath() + QLatin1Char('/') + QLatin1String(testDir));
+    mTempDir = new QTemporaryDir(QDir::tempPath() + QLatin1Char('/') + QLatin1StringView(testDir));
     mMail1 = KMime::Message::Ptr(new KMime::Message);
     mMail1->setContent(KMime::CRLFtoLF(sEntry1));
     mMail1->parse();

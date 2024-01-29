@@ -222,7 +222,7 @@ bool MBox::lock()
         if (!d->mLockFileName.isEmpty()) {
             args << QString::fromLocal8Bit(QFile::encodeName(d->mLockFileName));
         } else {
-            args << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName() + QLatin1String(".lock")));
+            args << QString::fromLocal8Bit(QFile::encodeName(d->mMboxFile.fileName() + QLatin1StringView(".lock")));
         }
 
         rc = QProcess::execute(QStringLiteral("lockfile"), args);
@@ -646,7 +646,7 @@ bool MBox::unlock()
         if (!d->mLockFileName.isEmpty()) {
             rc = !QFile(d->mLockFileName).remove();
         } else {
-            rc = !QFile(d->mMboxFile.fileName() + QLatin1String(".lock")).remove();
+            rc = !QFile(d->mMboxFile.fileName() + QLatin1StringView(".lock")).remove();
         }
         break;
 

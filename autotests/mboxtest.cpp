@@ -25,12 +25,12 @@ static const char *testLockFile = "test-mbox-lock-file";
 
 QString MboxTest::fileName()
 {
-    return mTempDir->path() + QLatin1Char('/') + QLatin1String(testFile);
+    return mTempDir->path() + QLatin1Char('/') + QLatin1StringView(testFile);
 }
 
 QString MboxTest::lockFileName()
 {
-    return mTempDir->path() + QLatin1Char('/') + QLatin1String(testLockFile);
+    return mTempDir->path() + QLatin1Char('/') + QLatin1StringView(testLockFile);
 }
 
 void MboxTest::removeTestFile()
@@ -42,7 +42,7 @@ void MboxTest::removeTestFile()
 
 void MboxTest::initTestCase()
 {
-    mTempDir = new QTemporaryDir(QDir::tempPath() + QLatin1Char('/') + QLatin1String(testDir));
+    mTempDir = new QTemporaryDir(QDir::tempPath() + QLatin1Char('/') + QLatin1StringView(testDir));
 
     QDir temp(mTempDir->path());
     QVERIFY(temp.exists());
@@ -117,11 +117,11 @@ void MboxTest::testProcMailLock()
     QVERIFY(mbox.load(fileName()));
 
     // By default the filename is used as part of the lockfile filename.
-    QVERIFY(!QFile(fileName() + QLatin1String(".lock")).exists());
+    QVERIFY(!QFile(fileName() + QLatin1StringView(".lock")).exists());
     QVERIFY(mbox.lock());
-    QVERIFY(QFile(fileName() + QLatin1String(".lock")).exists());
+    QVERIFY(QFile(fileName() + QLatin1StringView(".lock")).exists());
     QVERIFY(mbox.unlock());
-    QVERIFY(!QFile(fileName() + QLatin1String(".lock")).exists());
+    QVERIFY(!QFile(fileName() + QLatin1StringView(".lock")).exists());
 
     mbox.setLockFile(lockFileName());
     QVERIFY(!QFile(lockFileName()).exists());
@@ -474,7 +474,7 @@ void MboxTest::testReadOnlyMbox()
 
     QVERIFY(!mbox.purge(list)); // original mbox is read-only
 
-    QString tmpSaved = mTempDir->path() + QLatin1String("tempSaved.mbox");
+    QString tmpSaved = mTempDir->path() + QLatin1StringView("tempSaved.mbox");
     QVERIFY(mbox.save(tmpSaved)); // other mbox file can be written
 
     MBox savedMbox;

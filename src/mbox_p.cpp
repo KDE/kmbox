@@ -211,7 +211,7 @@ bool MBoxPrivate::isMBoxSeparator(const QByteArray &line) const
         return false;
     }
 
-    return mSeparatorMatcher.match(QLatin1String(line)).hasMatch();
+    return mSeparatorMatcher.match(QLatin1StringView(line)).hasMatch();
 }
 
 #undef STRDIM

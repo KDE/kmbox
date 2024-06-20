@@ -51,7 +51,7 @@ ecm_set_disabled_deprecation_versions(QT 6.7.0 KF 6.4.0)
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 
 set(COMPILE_WITH_UNITY_CMAKE_SUPPORT OFF)
-if (USE_UNITY_CMAKE_SUPPORT)
+if(USE_UNITY_CMAKE_SUPPORT)
     set(COMPILE_WITH_UNITY_CMAKE_SUPPORT ON)
 endif()
 
@@ -64,7 +64,7 @@ endif()
 
 ########### CMake Config Files ###########
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KPim6Mbox")
-if (BUILD_QCH)
+if(BUILD_QCH)
     ecm_install_qch_export(
         TARGETS KPim6Mbox_QCH
         FILE KPim6MBoxQchTargets.cmake
@@ -90,9 +90,9 @@ install(EXPORT KPim6MboxTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
     FILE KPim6MboxTargets.cmake NAMESPACE KPim6::)
 
 install(FILES
-   ${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h
-   DESTINATION ${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox
-   COMPONENT Devel
+  ${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox
+  COMPONENT Devel
 )
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)

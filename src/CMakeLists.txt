@@ -19,7 +19,7 @@ ecm_qt_declare_logging_category(KPim6Mbox HEADER kmbox_debug.h IDENTIFIER KMBOX_
         DESCRIPTION "kmbox (pim lib)" EXPORT KMBOX)
 
 
-if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(KPim6Mbox PROPERTIES UNITY_BUILD ON)
 endif()
 
@@ -33,8 +33,8 @@ target_include_directories(KPim6Mbox INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTAL
 target_include_directories(KPim6Mbox PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}/src;${KMbox_BINARY_DIR}/src>")
 
 target_link_libraries(KPim6Mbox
-   PUBLIC
-    KPim6::Mime 
+  PUBLIC
+  KPim6::Mime
 )
 
 set_target_properties(KPim6Mbox PROPERTIES
@@ -70,7 +70,7 @@ install(FILES
 
 ecm_qt_install_logging_categories(EXPORT KMBOX FILE kmbox.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
-if (BUILD_QCH)
+if(BUILD_QCH)
     ecm_add_qch(
         KPim6Mbox_QCH
         NAME KMbox

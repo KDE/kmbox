@@ -10,3 +10,4 @@ include:
       - /gitlab-templates/reuse-lint.yml
       - /gitlab-templates/android-qt6.yml
       - /gitlab-templates/cppcheck.yml
+      - /gitlab-templates/clang-format.yml

@@ -28,7 +28,12 @@ public:
     /**
      * Describes the type of locking that will be used.
      */
-    enum LockType { ProcmailLockfile, MuttDotlock, MuttDotlockPrivileged, None };
+    enum LockType {
+        ProcmailLockfile,
+        MuttDotlock,
+        MuttDotlockPrivileged,
+        None
+    };
 
     /**
      * Creates a new mbox object.

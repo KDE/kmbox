@@ -1,4 +1,4 @@
-maintainer: 
+maintainer:
 description: MBox library support
 tier: 3
 type: functional
@@ -7,12 +7,12 @@ platforms:
     - name: FreeBSD
     - name: Windows
     - name: macOS
-    - name: Android        
+    - name: Android
 portingAid: false
 deprecated: false
 release: false
 libraries:
- - cmake: "KPim6::Mbox"
+    - cmake: "KPim6::Mbox"
 cmakename: KPim6Mbox
 
 public_lib: true

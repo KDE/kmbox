@@ -4,20 +4,22 @@
 add_library(KPim6Mbox)
 add_library(KPim6::Mbox ALIAS KPim6Mbox)
 
-target_sources(KPim6Mbox PRIVATE
-    mboxentry.cpp
-    mbox_p.cpp
-    mbox.cpp
-    mboxentry.h
-    mbox.h
-    mbox_p.h
-    mboxentry_p.h
+target_sources(
+    KPim6Mbox
+    PRIVATE
+        mboxentry.cpp
+        mbox_p.cpp
+        mbox.cpp
+        mboxentry.h
+        mbox.h
+        mbox_p.h
+        mboxentry_p.h
 )
 
 ecm_qt_declare_logging_category(KPim6Mbox HEADER kmbox_debug.h IDENTIFIER KMBOX_LOG CATEGORY_NAME org.kde.pim.kmbox
         OLD_CATEGORY_NAMES log_kmbox
-        DESCRIPTION "kmbox (pim lib)" EXPORT KMBOX)
-
+        DESCRIPTION "kmbox (pim lib)" EXPORT KMBOX
+)
 
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(KPim6Mbox PROPERTIES UNITY_BUILD ON)
@@ -29,21 +31,30 @@ ecm_generate_export_header(KPim6Mbox
     DEPRECATED_BASE_VERSION 0
     USE_VERSION_HEADER
 )
-target_include_directories(KPim6Mbox INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox>")
-target_include_directories(KPim6Mbox PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}/src;${KMbox_BINARY_DIR}/src>")
-
-target_link_libraries(KPim6Mbox
-  PUBLIC
-  KPim6::Mime
+target_include_directories(
+    KPim6Mbox
+    INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox>"
+)
+target_include_directories(
+    KPim6Mbox
+    PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}/src;${KMbox_BINARY_DIR}/src>"
 )
 
-set_target_properties(KPim6Mbox PROPERTIES
-    VERSION ${KMBOX_VERSION}
-    SOVERSION ${KMBOX_SOVERSION}
-    EXPORT_NAME Mbox
+target_link_libraries(KPim6Mbox PUBLIC KPim6::Mime)
+
+set_target_properties(
+    KPim6Mbox
+    PROPERTIES
+        VERSION ${KMBOX_VERSION}
+        SOVERSION ${KMBOX_SOVERSION}
+        EXPORT_NAME Mbox
 )
 
-install(TARGETS KPim6Mbox EXPORT KPim6MboxTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(
+    TARGETS KPim6Mbox
+    EXPORT KPim6MboxTargets
+    ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+)
 
 ########### Generate Headers ###############
 ecm_generate_headers(KMbox_CamelCase_HEADERS
@@ -54,16 +65,14 @@ ecm_generate_headers(KMbox_CamelCase_HEADERS
   REQUIRED_HEADERS KMbox_HEADERS
 )
 
-install(FILES
-    ${KMbox_CamelCase_HEADERS}
+install(
+    FILES ${KMbox_CamelCase_HEADERS}
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox/KMbox/
     COMPONENT Devel
 )
 
-
-install(FILES
-  ${KMbox_BINARY_DIR}/src/kmbox_export.h
-  ${KMbox_HEADERS}
+install(
+    FILES ${KMbox_BINARY_DIR}/src/kmbox_export.h ${KMbox_HEADERS}
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox/kmbox
     COMPONENT Devel
 )

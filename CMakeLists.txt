@@ -50,7 +50,7 @@ include(ECMFeatureSummary)
 include(ECMAddQch)
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "6.4.80")
+set(KMIME_LIB_VERSION "6.4.90")
 
 option(
     BUILD_QCH

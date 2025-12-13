@@ -93,7 +93,7 @@ QByteArray MBoxPrivate::mboxMessageSeparator(const QByteArray &msg)
 
     QByteArray separator = "From ";
 
-    KMime::Headers::From *from = mail.from(false);
+    KMime::Headers::From *from = mail.from(KMime::DontCreate);
     if (!from || from->addresses().isEmpty()) {
         separator += "unknown@unknown.invalid";
     } else {
@@ -101,7 +101,7 @@ QByteArray MBoxPrivate::mboxMessageSeparator(const QByteArray &msg)
     }
 
     // format dateTime according to the mbox "standard" RFC4155
-    KMime::Headers::Date *date = mail.date(false);
+    KMime::Headers::Date *date = mail.date(KMime::DontCreate);
     QDateTime dateTime;
     if (!date || date->isEmpty()) {
         dateTime = QDateTime::currentDateTimeUtc();

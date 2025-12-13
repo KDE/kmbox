@@ -52,11 +52,11 @@ void MboxTest::initTestCase()
     mboxfile.close();
     QVERIFY(mboxfile.exists());
 
-    mMail1 = KMime::Message::Ptr(new KMime::Message);
+    mMail1 = QSharedPointer<KMime::Message>(new KMime::Message);
     mMail1->setContent(KMime::CRLFtoLF(sEntry1));
     mMail1->parse();
 
-    mMail2 = KMime::Message::Ptr(new KMime::Message);
+    mMail2 = QSharedPointer<KMime::Message>(new KMime::Message);
     mMail2->setContent(KMime::CRLFtoLF(sEntry2));
     mMail2->parse();
 }
@@ -269,7 +269,7 @@ void MboxTest::testBlankLines()
     for (int i = 0; i < 5; ++i) {
         removeTestFile();
 
-        KMime::Message::Ptr mail = KMime::Message::Ptr(new KMime::Message);
+        QSharedPointer<KMime::Message> mail(new KMime::Message);
         mail->setContent(KMime::CRLFtoLF(sEntry1 + QByteArray(i, '\n')));
         mail->parse();
 

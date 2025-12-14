@@ -48,7 +48,7 @@ MBox::~MBox()
 // d->mInitialMboxFileSize is set to the file size at that moment. New entries
 // are stored in memory (d->mAppendedEntries). The initial file size and the size
 // of the buffer determine the offset for the next message to append.
-MBoxEntry MBox::appendMessage(const QSharedPointer<KMime::Message> &entry)
+MBoxEntry MBox::appendMessage(const std::shared_ptr<KMime::Message> &entry)
 {
     // It doesn't make sense to add entries when we don't have an reference file.
     Q_ASSERT(!d->mMboxFile.fileName().isEmpty());

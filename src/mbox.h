@@ -57,7 +57,7 @@ public:
      * @return the corresponding mbox entry for the message in the file or an invalid mbox entry
      *         if the message was not added.
      */
-    [[nodiscard]] MBoxEntry appendMessage(const QSharedPointer<KMime::Message> &message);
+    [[nodiscard]] MBoxEntry appendMessage(const std::shared_ptr<KMime::Message> &message);
 
     /**
      * Retrieve the mbox entry objects for all emails from the file except the

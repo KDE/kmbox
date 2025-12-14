@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
-set(PIM_VERSION "6.6.40")
+set(PIM_VERSION "6.6.41")
 
 project(KMbox VERSION ${PIM_VERSION})
 
@@ -58,7 +58,7 @@ include(ECMFeatureSummary)
 include(ECMAddQch)
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "6.6.40")
+set(KMIME_LIB_VERSION "6.6.44")
 
 option(
     BUILD_QCH

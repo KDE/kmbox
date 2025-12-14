@@ -28,7 +28,7 @@ QString MBoxBenchmark::fileName()
 void MBoxBenchmark::initTestCase()
 {
     mTempDir = new QTemporaryDir(QDir::tempPath() + QLatin1Char('/') + QLatin1StringView(testDir));
-    mMail1 = QSharedPointer<KMime::Message>(new KMime::Message);
+    mMail1 = std::make_shared<KMime::Message>();
     mMail1->setContent(KMime::CRLFtoLF(sEntry1));
     mMail1->parse();
 }
@@ -66,7 +66,7 @@ void MBoxBenchmark::testNoLockPerformance()
 
 void MBoxBenchmark::testProcfileLockPerformance()
 {
-    mMail1 = QSharedPointer<KMime::Message>(new KMime::Message);
+    mMail1 = std::make_shared<KMime::Message>();
     mMail1->setContent(KMime::CRLFtoLF(sEntry1));
     mMail1->parse();
 

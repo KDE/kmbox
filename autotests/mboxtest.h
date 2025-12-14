@@ -39,8 +39,8 @@ private:
 
 private:
     QTemporaryDir *mTempDir = nullptr;
-    QSharedPointer<KMime::Message> mMail1;
-    QSharedPointer<KMime::Message> mMail2;
+    std::shared_ptr<KMime::Message> mMail1;
+    std::shared_ptr<KMime::Message> mMail2;
 };
 
 class ThreadFillsMBox : public QThread

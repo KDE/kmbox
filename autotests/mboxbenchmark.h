@@ -27,5 +27,5 @@ private:
 
 private:
     QTemporaryDir *mTempDir = nullptr;
-    QSharedPointer<KMime::Message> mMail1;
+    std::shared_ptr<KMime::Message> mMail1;
 };

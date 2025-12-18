@@ -80,7 +80,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
-ecm_set_disabled_deprecation_versions(QT 6.10.0 KF 6.21.0)
+ecm_set_disabled_deprecation_versions(QT 6.10.0 KF 6.21.0 KMIME 6.7.0)
 
 option(
     USE_UNITY_CMAKE_SUPPORT

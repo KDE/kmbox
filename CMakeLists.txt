@@ -55,21 +55,11 @@ endif()
 include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 include(ECMFeatureSummary)
-include(ECMAddQch)
+include(ECMGenerateQDoc)
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
 set(KMIME_LIB_VERSION "6.6.44")
 
-option(
-    BUILD_QCH
-    "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)"
-    OFF
-)
-add_feature_info(
-    QCH
-    ${BUILD_QCH}
-    "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)"
-)
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPim6MboxConfigVersion.cmake"
@@ -102,17 +92,6 @@ endif()
 
 ########### CMake Config Files ###########
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KPim6Mbox")
-if(BUILD_QCH)
-    ecm_install_qch_export(
-        TARGETS KPim6Mbox_QCH
-        FILE KPim6MBoxQchTargets.cmake
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        COMPONENT Devel
-    )
-    set(PACKAGE_INCLUDE_QCHTARGETS
-        "include(\"\${CMAKE_CURRENT_LIST_DIR}/KPim6MBoxQchTargets.cmake\")"
-    )
-endif()
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/KPimMboxConfig.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/KPim6MboxConfig.cmake"

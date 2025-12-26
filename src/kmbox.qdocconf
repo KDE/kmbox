@@ -1,6 +1,6 @@
 include($KDE_DOCS/global/qt-module-defaults.qdocconf)
 
-project = KMbox
+project = KMBox
 description = KMBox provides API to access emails in storages in the MBox format.
 
 
@@ -14,20 +14,20 @@ outputformats = HTML
 depends += \
     qtcore
 
-navigation.landingpage = "KMBOX"
+navigation.landingpage = "KMBox"
 
-qhp.projects            = KMBOX
+qhp.projects            = kmbox
 
-qhp.KMBOX.file                = kmbox.qhp
-qhp.KMBOX.namespace           = org.kde.kmbox.$QT_VERSION_TAG
-qhp.KMBOX.virtualFolder       = kmbox
-qhp.KMBOX.indexTitle          = KMbox
-qhp.KMBOX.indexRoot           =
+qhp.kmbox.file                = kmbox.qhp
+qhp.kmbox.namespace           = org.kde.kmbox.$QT_VERSION_TAG
+qhp.kmbox.virtualFolder       = kmbox
+qhp.kmbox.indexTitle          = kmbox
+qhp.kmbox.indexRoot           =
 
-qhp.KMBOX.subprojects         = classes
-qhp.KMBOX.subprojects.classes.title = C++ Classes
-qhp.KMBOX.subprojects.classes.indexTitle = KMBox C++ Classes
-qhp.KMBOX.subprojects.classes.selectors = class fake:headerfile
-qhp.KMBOX.subprojects.classes.sortPages = true
+qhp.kmbox.subprojects         = classes
+qhp.kmbox.subprojects.classes.title = C++ Classes
+qhp.kmbox.subprojects.classes.indexTitle = KMBox C++ Classes
+qhp.kmbox.subprojects.classes.selectors = class fake:headerfile
+qhp.kmbox.subprojects.classes.sortPages = true
 
 tagfile = kmbox.tags

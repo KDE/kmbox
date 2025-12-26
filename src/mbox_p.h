@@ -20,7 +20,7 @@ class MBoxPrivate : public QObject
     Q_OBJECT
 
 public:
-    MBoxPrivate(MBox *mbox);
+    explicit MBoxPrivate(MBox *mbox);
 
     ~MBoxPrivate() override;
 

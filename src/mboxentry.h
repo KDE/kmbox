@@ -17,6 +17,7 @@ namespace KMBox
 class MBoxEntryPrivate;
 /*!
  * \class KMBox::MBoxEntry
+ * \namespace KMBox
  * \inmodule KMBox
  * \brief A class that encapsulates an entry of a MBox.
  *

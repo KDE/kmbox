@@ -19,6 +19,7 @@ class MBoxPrivate;
 /*!
  * \class KMBox::MBox
  * \inmodule KMBox
+ * \inheaderfile KMbox/MBox
  * \brief A class to access mail storages in MBox format.
  *
  * \since 4.6

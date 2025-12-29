@@ -12,12 +12,17 @@
 #include <QPair>
 #include <QSharedDataPointer>
 
+/*!
+ * \namespace KMBox
+ * \inmodule KMBox
+ */
 namespace KMBox
 {
 class MBoxEntryPrivate;
 /*!
  * \class KMBox::MBoxEntry
  * \inmodule KMBox
+ * \inheaderfile KMbox/MBoxEntry
  * \brief A class that encapsulates an entry of a MBox.
  *
  * \since 4.6

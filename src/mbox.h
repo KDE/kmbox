@@ -158,7 +158,7 @@ public:
      *
      * \sa lock(), unlock()
      */
-    KMime::Message *readMessage(const MBoxEntry &entry);
+    std::unique_ptr<KMime::Message> readMessage(const MBoxEntry &entry);
 
     /*!
      * Reads the headers of the message for the given mbox \a entry.

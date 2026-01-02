@@ -482,14 +482,14 @@ QByteArray MBox::readRawMessage(const MBoxEntry &entry)
     return message;
 }
 
-KMime::Message *MBox::readMessage(const MBoxEntry &entry)
+std::unique_ptr<KMime::Message> MBox::readMessage(const MBoxEntry &entry)
 {
     const QByteArray message = readRawMessage(entry);
     if (message.isEmpty()) {
         return nullptr;
     }
 
-    auto mail = new KMime::Message();
+    auto mail = std::make_unique<KMime::Message>();
     mail->setContent(KMime::CRLFtoLF(message));
     mail->parse();
 

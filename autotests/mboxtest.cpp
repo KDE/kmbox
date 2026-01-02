@@ -188,7 +188,7 @@ void MboxTest::testAppend()
         const QByteArray header = mbox.readMessageHeaders(msgInfo);
         QVERIFY(!header.isEmpty());
 
-        KMime::Message *message = mbox.readMessage(msgInfo);
+        auto message = mbox.readMessage(msgInfo);
         QVERIFY(message != nullptr);
 
         auto headers = new KMime::Message();
@@ -212,7 +212,6 @@ void MboxTest::testAppend()
             QCOMPARE(message->from()->as7BitString(), mMail2->from()->as7BitString());
         }
 
-        delete message;
         delete headers;
     }
 }
@@ -424,7 +423,7 @@ void MboxTest::testHeaders()
         const QByteArray header = mbox.readMessageHeaders(msgInfo);
         QVERIFY(!header.isEmpty());
 
-        KMime::Message *message = mbox.readMessage(msgInfo);
+        auto message = mbox.readMessage(msgInfo);
         QVERIFY(message != nullptr);
 
         auto headers = new KMime::Message();
@@ -436,7 +435,6 @@ void MboxTest::testHeaders()
         QCOMPARE(message->to()->as7BitString(), headers->to()->as7BitString());
         QCOMPARE(message->from()->as7BitString(), headers->from()->as7BitString());
 
-        delete message;
         delete headers;
     }
 }

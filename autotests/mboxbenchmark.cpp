@@ -59,7 +59,6 @@ void MBoxBenchmark::testNoLockPerformance()
         const auto lst = mbox2.entries();
         for (const MBoxEntry &entry : lst) {
             auto mail = mbox2.readMessage(entry);
-            delete mail;
         }
     }
 }
@@ -88,7 +87,6 @@ void MBoxBenchmark::testProcfileLockPerformance()
         const auto lst = mbox2.entries();
         for (const MBoxEntry &entry : lst) {
             auto mail = mbox2.readMessage(entry);
-            delete mail;
         }
     }
 }

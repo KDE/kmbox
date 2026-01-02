@@ -31,11 +31,15 @@ class KMBOX_EXPORT MBoxEntry
 {
 public:
     /*!
+     * \typealias KMBox::MBoxEntry::List
+     *
      * Describes a list of mbox entry objects.
      */
     using List = QList<MBoxEntry>;
 
     /*!
+     * \typealias KMBox::MBoxEntry::Pair
+     *
      * Describes a pair of mbox entry objects.
      */
     using Pair = QPair<MBoxEntry, MBoxEntry>;

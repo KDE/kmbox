@@ -91,7 +91,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
-ecm_set_disabled_deprecation_versions(QT 6.11.0 KF 6.21.0 KMIME 6.7.0)
+ecm_set_disabled_deprecation_versions(QT 6.11.0 KF 6.22.0 KMIME 6.7.0)
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # Not setting for GNU due to too many warnings related to private members of base classes or around lambdas
     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328

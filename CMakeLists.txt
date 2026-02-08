@@ -41,12 +41,10 @@ endif()
 if(NOT ${PRE_COMMIT_INSTALLED})
     find_program(PRE_COMMIT_EXECUTABLE pre-commit)
     if(PRE_COMMIT_EXECUTABLE)
-        message(
-            STATUS
-            "This module has pre-commit support. pre-commit binary was found. Installing pre-commit hook"
-        )
+        message(STATUS "This module has pre-commit support. pre-commit binary was found. Installing pre-commit hook")
         execute_process(
-            COMMAND "${PRE_COMMIT_EXECUTABLE}" install -f
+            COMMAND
+                "${PRE_COMMIT_EXECUTABLE}" install -f
             ERROR_QUIET
             RESULT_VARIABLE _precommitresult
             WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
@@ -63,10 +61,7 @@ if(NOT ${PRE_COMMIT_INSTALLED})
             kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
         endif()
     else()
-        message(
-            WARNING
-            "This module has pre-commit support. pre-commit binary was not found."
-        )
+        message(WARNING "This module has pre-commit support. pre-commit binary was not found.")
         include(KDEGitCommitHooks)
         include(KDEClangFormat)
         kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
@@ -97,11 +92,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328
     string(APPEND CMAKE_CXX_FLAGS " -Wshadow")
 endif()
-option(
-    USE_UNITY_CMAKE_SUPPORT
-    "Use UNITY cmake support (speedup compile time)"
-    OFF
-)
+option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 
 set(COMPILE_WITH_UNITY_CMAKE_SUPPORT OFF)
 if(USE_UNITY_CMAKE_SUPPORT)
@@ -142,15 +133,11 @@ install(
     COMPONENT Devel
 )
 
-install(
-    EXPORT KPim6MboxTargets
-    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-    FILE KPim6MboxTargets.cmake
-    NAMESPACE KPim6::
-)
+install(EXPORT KPim6MboxTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KPim6MboxTargets.cmake NAMESPACE KPim6::)
 
 install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h
+    FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox
     COMPONENT Devel
 )
@@ -159,5 +146,9 @@ if(DEFINED kde_configure_git_pre_commit_hook)
     kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 endif()
 ecm_feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-file(GLOB_RECURSE ALL_SOURCE_FILES src/*.cpp src/*.h)
+file(
+    GLOB_RECURSE ALL_SOURCE_FILES
+    src/*.cpp
+    src/*.h
+)
 ecm_check_outbound_license(LICENSES GPL-2.0-only  FILES ${ALL_SOURCE_FILES})

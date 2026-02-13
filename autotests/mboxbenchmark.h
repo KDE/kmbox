@@ -20,7 +20,6 @@ private Q_SLOTS:
     void cleanupTestCase();
     void testNoLockPerformance();
     void testProcfileLockPerformance();
-    void voidTestMD5Performance();
 
 private:
     QString fileName();

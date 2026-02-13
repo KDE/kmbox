@@ -91,32 +91,4 @@ void MBoxBenchmark::testProcfileLockPerformance()
     }
 }
 
-void MBoxBenchmark::voidTestMD5Performance()
-{
-    MBox mbox;
-    mbox.setLockType(MBox::None);
-    mbox.load(fileName());
-
-    for (int i = 0; i < 1000; ++i) {
-        mbox.appendMessage(mMail1);
-    }
-
-    mbox.save(fileName());
-
-    QBENCHMARK {
-        QFile file(fileName());
-        QVERIFY(file.exists());
-        QVERIFY(file.open(QIODevice::ReadOnly));
-
-        QCryptographicHash hash(QCryptographicHash::Md5);
-        qint64 blockSize = 512 * 1024; // Read blocks of 512K
-
-        while (!file.atEnd()) {
-            hash.addData(file.read(blockSize));
-        }
-
-        file.close();
-    }
-}
-
 #include "moc_mboxbenchmark.cpp"

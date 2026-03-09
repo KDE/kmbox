@@ -39,7 +39,7 @@ ecm_generate_export_header(KPim6Mbox
 target_include_directories(KPim6Mbox INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox>")
 target_include_directories(KPim6Mbox PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}/src;${KMbox_BINARY_DIR}/src>")
 
-target_link_libraries(KPim6Mbox PUBLIC KPim6::Mime)
+target_link_libraries(KPim6Mbox PUBLIC KF6::Mime)
 
 set_target_properties(
     KPim6Mbox
@@ -75,3 +75,27 @@ install(
 
 ecm_qt_install_logging_categories(EXPORT KMBOX FILE kmbox.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 ecm_generate_qdoc(KPim6Mbox kmbox.qdocconf)
+
+ecm_add_installed_library_check(KPim6Mbox
+    PACKAGE_NAME "KPim6Mbox"
+    PACKAGE_VERSION ${KMBOX_VERSION}
+    PACKAGE_TARGET_NAMESPACE "KPim6::"
+)
+
+ecm_installed_library_check_include_strings(KPim6Mbox
+    HEADERS
+    ${KMbox_HEADERS}
+    PREFIX kmbox
+)
+
+ecm_installed_library_check_include_strings(KPim6Mbox
+   HEADERS
+   ${KMbox_CamelCase_HEADERS}
+    PREFIX KMbox
+)
+
+ecm_installed_library_check_version_preprocessor_macros(KPim6Mbox
+    PREFIX KMBOX
+    VERSION ${KMBOX_VERSION}
+    SILENT
+)

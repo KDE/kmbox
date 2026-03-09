@@ -6,7 +6,7 @@ SPDX-PackageSupplier = "Montel Laurent <montel@kde.org>"
 SPDX-PackageDownloadLocation = "https://invent.kde.org/pim/kmbox"
 
 [[annotations]]
-path = ["src/kmbox-index.qdoc", "src/kmbox.qdoc", "src/kmbox.qdocconf"]
+path = ["src/kmbox-index.qdoc", "src/kmbox.qdoc", "src/kmbox.qdocconf", "README-ECMInstalledLibraryCheck.md"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "CC0-1.0"
@@ -16,3 +16,9 @@ path = [".gersemirc"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "Allen Winter <winter@kde.org>"
 SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["po/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "none"
+SPDX-License-Identifier = "LGPL-2.0-or-later"

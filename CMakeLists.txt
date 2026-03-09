@@ -1,24 +1,27 @@
 # SPDX-FileCopyrightText: none
 # SPDX-License-Identifier: BSD-3-Clause
 
-cmake_minimum_required(VERSION 3.27)
-set(PIM_VERSION "6.6.41")
+cmake_minimum_required(VERSION 3.29)
+set(PIM_VERSION "6.8.0")
 
 project(KMbox VERSION ${PIM_VERSION})
 
 # ECM setup
-set(KF_MIN_VERSION "6.22.0")
+set(KF_MIN_VERSION "6.25.0")
 set(QT_REQUIRED_VERSION "6.9.0")
 find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
+set(CMAKE_MODULE_PATH
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/ecmcopy
+    ${ECM_MODULE_PATH}
+)
+
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 
 include(ECMGenerateExportHeader)
 include(ECMGenerateHeaders)
-
+include(ECMInstalledLibraryCheck)
 include(ECMSetupVersion)
 include(ECMCheckOutboundLicense)
 file(
@@ -31,9 +34,12 @@ file(
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git/")
     set(GIT_SOURCE_TARBALL TRUE)
 endif()
-
 if(GIT_SOURCE_TARBALL)
     set(PRE_COMMIT_INSTALLED FALSE)
+    include(KDEGitCommitHooks)
+    include(KDEClangFormat)
+    kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+
     if(${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
         if(EXISTS "${PROJECT_SOURCE_DIR}/.git/hooks/pre-commit")
             file(READ "${PROJECT_SOURCE_DIR}/.git/hooks/pre-commit" FILE_CONTENTS)
@@ -48,35 +54,38 @@ if(GIT_SOURCE_TARBALL)
         endif()
     endif()
     if(NOT ${PRE_COMMIT_INSTALLED})
-        find_program(PRE_COMMIT_EXECUTABLE pre-commit)
-        if(PRE_COMMIT_EXECUTABLE)
+        function(install_hook executable hook_name)
             message(
                 STATUS
-                "This module has pre-commit support. pre-commit binary was found. Installing pre-commit hook"
+                "This module has ${hook_name} support. ${hook_name} binary was found. Installing ${hook_name} hook"
             )
             execute_process(
                 COMMAND
-                    "${PRE_COMMIT_EXECUTABLE}" install -f
+                    "${executable}" install -f
                 ERROR_QUIET
                 RESULT_VARIABLE _precommitresult
                 WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
             )
             if(_precommitresult EQUAL 0)
-                message(STATUS "Pre-commit installed.")
+                message(STATUS "${hook_name} installed.")
             else()
                 message(
                     WARNING
-                    "Error during installing pre-commit hook: ${PRE_COMMIT_EXECUTABLE} project source dir ${PROJECT_SOURCE_DIR}"
+                    "Error during installing ${hook_name} hook: ${executable} project source dir ${PROJECT_SOURCE_DIR}"
                 )
-                include(KDEGitCommitHooks)
-                include(KDEClangFormat)
-                kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
             endif()
+        endfunction()
+
+        find_program(PREK_EXECUTABLE prek)
+        if(PREK_EXECUTABLE)
+            install_hook(${PREK_EXECUTABLE} "Prek")
         else()
-            message(WARNING "This module has pre-commit support. pre-commit binary was not found.")
-            include(KDEGitCommitHooks)
-            include(KDEClangFormat)
-            kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+            find_program(PRE_COMMIT_EXECUTABLE pre-commit)
+            if(PRE_COMMIT_EXECUTABLE)
+                install_hook(${PRE_COMMIT_EXECUTABLE} "pre-commit")
+            else()
+                message(WARNING "This module has pre-commit support. pre-commit binary was not found.")
+            endif()
         endif()
     endif()
 endif()
@@ -86,8 +95,7 @@ include(ECMDeprecationSettings)
 include(ECMFeatureSummary)
 include(ECMGenerateQDoc)
 
-set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "6.6.44")
+set(KMIME_LIB_VERSION "6.8.0")
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h"
@@ -96,10 +104,14 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 )
 
 ########### Find packages ###########
-find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
+find_package(KF6Mime ${KF_MIN_VERSION} CONFIG)
+if(NOT TARGET KF6::Mime)
+    find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
+    add_library(KF6::Mime ALIAS KPim6::Mime)
+endif()
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
-ecm_set_disabled_deprecation_versions(QT 6.11.0 KF 6.23.0 KMIME 6.7.0)
+ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.28.0 )
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # Not setting for GNU due to too many warnings related to private members of base classes or around lambdas
     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328

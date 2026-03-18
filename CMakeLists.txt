@@ -95,7 +95,6 @@ include(ECMDeprecationSettings)
 include(ECMFeatureSummary)
 include(ECMGenerateQDoc)
 
-set(KMBOX_LIB_VERSION ${PIM_VERSION})
 set(KMIME_LIB_VERSION "6.6.44")
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX

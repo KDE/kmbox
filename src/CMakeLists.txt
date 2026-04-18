@@ -39,7 +39,7 @@ ecm_generate_export_header(KPim6Mbox
 target_include_directories(KPim6Mbox INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim6/KMbox>")
 target_include_directories(KPim6Mbox PUBLIC "$<BUILD_INTERFACE:${KMbox_SOURCE_DIR}/src;${KMbox_BINARY_DIR}/src>")
 
-target_link_libraries(KPim6Mbox PUBLIC KPim6::Mime)
+target_link_libraries(KPim6Mbox PUBLIC KF6::Mime)
 
 set_target_properties(
     KPim6Mbox

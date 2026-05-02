@@ -111,7 +111,7 @@ if(NOT TARGET KF6::Mime)
 endif()
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
-ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.25.0 KMIME 6.7.0)
+ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.26.0 KMIME 6.7.0)
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # Not setting for GNU due to too many warnings related to private members of base classes or around lambdas
     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328

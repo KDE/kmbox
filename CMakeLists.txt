@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 cmake_minimum_required(VERSION 3.27)
-set(PIM_VERSION "6.7.1")
+set(PIM_VERSION "6.7.2")
 
 project(KMbox VERSION ${PIM_VERSION})
 

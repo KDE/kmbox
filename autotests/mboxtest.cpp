@@ -171,12 +171,15 @@ void MboxTest::testAppend()
 
     // First message added to an empty file should be at offset 0
     QCOMPARE(mbox.entries().size(), 0);
-    QCOMPARE(mbox.appendMessage(mMail1).messageOffset(), static_cast<quint64>(0));
+    const auto offsetMail1 = mbox.appendMessage(mMail1);
+    QVERIFY(offsetMail1.isValid());
+    QCOMPARE(offsetMail1.messageOffset(), static_cast<quint64>(0));
     QCOMPARE(mbox.entries().size(), 1);
     QVERIFY(mbox.entries().constFirst().separatorSize() > 0);
     QCOMPARE(mbox.entries().constFirst().messageSize(), static_cast<quint64>(sEntry1.size()));
 
     const MBoxEntry offsetMail2 = mbox.appendMessage(mMail2);
+    QVERIFY(offsetMail2.isValid());
     QVERIFY(offsetMail2.messageOffset() > static_cast<quint64>(sEntry1.size()));
     QCOMPARE(mbox.entries().size(), 2);
     QVERIFY(mbox.entries().constLast().separatorSize() > 0);

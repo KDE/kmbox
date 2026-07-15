@@ -95,8 +95,6 @@ include(ECMDeprecationSettings)
 include(ECMFeatureSummary)
 include(ECMGenerateQDoc)
 
-set(KMIME_LIB_VERSION "6.7.40")
-
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPim6MboxConfigVersion.cmake"
@@ -105,10 +103,6 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 
 ########### Find packages ###########
 find_package(KF6Mime ${KF_MIN_VERSION} CONFIG)
-if(NOT TARGET KF6::Mime)
-    find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
-    add_library(KF6::Mime ALIAS KPim6::Mime)
-endif()
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.28.0 )

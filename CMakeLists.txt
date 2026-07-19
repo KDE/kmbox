@@ -95,7 +95,7 @@ include(ECMDeprecationSettings)
 include(ECMFeatureSummary)
 include(ECMGenerateQDoc)
 
-set(KMIME_LIB_VERSION "6.7.80")
+set(KMIME_LIB_VERSION "6.7.90")
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h"

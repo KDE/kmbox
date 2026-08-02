@@ -102,7 +102,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 )
 
 ########### Find packages ###########
-find_package(KF6Mime ${KF_MIN_VERSION} CONFIG)
+find_package(KF6Mime ${KF_MIN_VERSION} CONFIG REQUIRED)
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.29.0 )

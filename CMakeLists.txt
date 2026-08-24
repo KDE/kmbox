@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 cmake_minimum_required(VERSION 3.27)
-set(PIM_VERSION "6.7.3")
+set(PIM_VERSION "6.6.41")
 
 project(KMbox VERSION ${PIM_VERSION})
 
@@ -87,7 +87,7 @@ include(ECMFeatureSummary)
 include(ECMGenerateQDoc)
 
 set(KMBOX_LIB_VERSION ${PIM_VERSION})
-set(KMIME_LIB_VERSION "6.7.3")
+set(KMIME_LIB_VERSION "6.6.44")
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/kmbox_version.h"

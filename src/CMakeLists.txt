@@ -97,5 +97,4 @@ ecm_installed_library_check_include_strings(KPim6Mbox
 ecm_installed_library_check_version_preprocessor_macros(KPim6Mbox
     PREFIX KMBOX
     VERSION ${KMBOX_VERSION}
-    SILENT
 )

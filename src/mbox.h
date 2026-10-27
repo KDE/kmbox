@@ -218,6 +218,8 @@ public:
      * This method will not do anything if the mbox object is currently locked
      * to make sure that it doesn't leave a locked file for one of the lockfile
      * methods.
+     *
+     * Returns \c true if the lock type was changed; \c false otherwise.
      */
     [[nodiscard]] bool setLockType(LockType ltype);
 

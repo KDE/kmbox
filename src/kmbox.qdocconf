@@ -12,7 +12,8 @@ sourcedirs += .
 outputformats = HTML
 
 depends += \
-    qtcore
+    qtcore \
+    kmime
 
 navigation.landingpage = "KMBox"
 
@@ -21,7 +22,7 @@ qhp.projects            = kmbox
 qhp.kmbox.file                = kmbox.qhp
 qhp.kmbox.namespace           = org.kde.kmbox.$QT_VERSION_TAG
 qhp.kmbox.virtualFolder       = kmbox
-qhp.kmbox.indexTitle          = kmbox
+qhp.kmbox.indexTitle          = KMBox
 qhp.kmbox.indexRoot           =
 
 qhp.kmbox.subprojects         = classes

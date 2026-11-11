@@ -9,8 +9,8 @@
 #include "kmbox_export.h"
 
 #include <QList>
-#include <QPair>
 #include <QSharedDataPointer>
+#include <utility>
 
 /*!
  * \namespace KMBox
@@ -42,7 +42,7 @@ public:
      *
      * Describes a pair of mbox entry objects.
      */
-    using Pair = QPair<MBoxEntry, MBoxEntry>;
+    using Pair = std::pair<MBoxEntry, MBoxEntry>;
 
     /*!
      * Creates an invalid mbox entry object.

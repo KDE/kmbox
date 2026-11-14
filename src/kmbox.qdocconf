@@ -1,6 +1,7 @@
 include($KDE_DOCS/global/qt-module-defaults.qdocconf)
 
 project = KMBox
+moduleheader = kmbox_qdocmoduleheader.h
 description = KMBox provides API to access emails in storages in the MBox format.
 
 

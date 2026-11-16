@@ -2,8 +2,8 @@
     \module KMBox
     \title KMBox C++ Classes
     \ingroup modules
-    \cmakepackage KPim6
-    \cmakecomponent Mbox
+    \cmakepackage KPim6Mbox
+    \cmaketargetitem KPim6::Mbox
 
     \brief KMBox provides API to access emails in storages in the MBox format.
 */

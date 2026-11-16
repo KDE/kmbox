@@ -11,7 +11,7 @@
 
     \section2 Building with CMake
 
-    \include {module-use.qdocinc} {building with cmake} {KPim6} {Mbox} {KPim6::Mbox}
+    \include {module-use.qdocinc} {building with cmake nomodule} {KPim6Mbox} {KPim6::Mbox}
 
     \section1 API Reference
 

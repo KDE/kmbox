@@ -331,9 +331,9 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
 
     quint64 origFileSize = d->mMboxFile.size();
 
-    QListIterator<MBoxEntry> i(d->mEntries);
-    while (i.hasNext()) {
-        MBoxEntry entry = i.next();
+    const qsizetype count = d->mEntries.size();
+    for (qsizetype i = 0; i < count; ++i) {
+        MBoxEntry entry = d->mEntries.at(i);
 
         if (deletedEntries.contains(entry) && !writeOffSetInitialized) {
             writeOffset = entry.messageOffset();
@@ -342,9 +342,8 @@ bool MBox::purge(const MBoxEntry::List &deletedEntries, QList<MBoxEntry::Pair> *
             // The current message doesn't have to be deleted, but must be moved.
             // First determine the size of the entry that must be moved.
             quint64 entrySize = 0;
-            if (i.hasNext()) {
-                entrySize = i.next().messageOffset() - entry.messageOffset();
-                i.previous(); // Go back to make sure that we also handle the next entry.
+            if (i + 1 < count) {
+                entrySize = d->mEntries.at(i + 1).messageOffset() - entry.messageOffset();
             } else {
                 entrySize = origFileSize - entry.messageOffset();
             }

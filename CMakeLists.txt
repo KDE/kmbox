@@ -110,7 +110,9 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 find_package(KF6Mime ${KF_MIN_VERSION} CONFIG REQUIRED)
 
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
-add_definitions(-DQT_LEAN_HEADERS=2)
+if(ECM_VERSION VERSION_GREATER_EQUAL "6.33.0")
+    add_definitions(-DQT_LEAN_HEADERS=2)
+endif()
 add_definitions(-DQT_NO_JAVA_STYLE_ITERATORS)
 ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.32.0 )
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")

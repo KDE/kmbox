@@ -109,12 +109,12 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KMBOX
 ########### Find packages ###########
 find_package(KF6Mime ${KF_MIN_VERSION} CONFIG REQUIRED)
 
-add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 if(ECM_VERSION VERSION_GREATER_EQUAL "6.33.0")
-    add_definitions(-DQT_LEAN_HEADERS=2)
-    add_definitions(-DQT_NO_QPAIR)
+    add_compile_definitions(QT_ENABLE_STRICT_MODE_UP_TO=0x060C00)
+else()
+    add_definitions(-DQT_NO_JAVA_STYLE_ITERATORS)
+    add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 endif()
-add_definitions(-DQT_NO_JAVA_STYLE_ITERATORS)
 ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.32.0 )
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # Not setting for GNU due to too many warnings related to private members of base classes or around lambdas
